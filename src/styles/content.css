@@ -1,0 +1,26 @@
+.container-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin:0;
+    padding:0;
+  }
+  
+  .title {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 5px solid #D7DBDD;
+    color: #212F3D;
+  }
+
+  .title h1{
+    margin-left: 20px;
+  }
+  .content {
+    flex: 1; /* Ocupa el espacio restante verticalmente */
+    padding: 10px;
+    border: 5px solid #D7DBDD;
+    border-top: 0px solid #D7DBDD;
+  }
