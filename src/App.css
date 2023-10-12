@@ -24,6 +24,8 @@ main{
   display: flex;
   align-items:center;
   padding:20px 15px;
+  gap:15px;
+  height: 40px;
 }
 .logo{
   font-size: 30px;
@@ -32,6 +34,8 @@ main{
   display: flex;
   font-size: 25px;
   margin-left: 50px;
+  height: 45px;
+  align-items: center;
 }
 .link{
   display: flex;
