@@ -5,7 +5,7 @@ import '../App.css'
 const Navbar = () => {
     return(
         <div className="navbar">
-            Navbar
+            <div className="logo-navbar"><img src="/images/icons/paquetexpress-logo-navbar.svg"></img></div>
         </div>
     );
 }
