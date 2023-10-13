@@ -24,3 +24,22 @@
     border: 5px solid #D7DBDD;
     border-top: 0px solid #D7DBDD;
   }
+
+
+  @media (max-width: 768px) {
+    .container-content {
+      flex-direction: column; /* Cambia a apilado en pantallas pequeñas */
+    }
+  
+    .title {
+      height: 3rem; /* Reduce la altura en pantallas pequeñas */
+    }
+  
+    .title h1 {
+      margin-left: 10px; /* Reduce el margen en pantallas pequeñas */
+    }
+  
+    .content {
+      padding: 5px; /* Reduce el espaciado en pantallas pequeñas */
+    }
+  }
