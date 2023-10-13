@@ -71,6 +71,7 @@ const Sidebar = ({children}) => {
                 <div className="top-section"></div>
                 <div style={{marginLeft: isOpen ? "20px" : "20px"}} className="bars">
                     <FaBars onClick={toggle}/>
+                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Menu</div>
                 </div>
                 <div>
                 {

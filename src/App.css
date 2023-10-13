@@ -35,7 +35,11 @@ main{
   font-size: 25px;
   margin-left: 50px;
   height: 45px;
+  font-weight: bold;
+  transition: all 0.5s;
+  gap: 15px;
   align-items: center;
+  cursor: pointer;
 }
 .link{
   display: flex;
