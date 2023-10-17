@@ -1,11 +1,15 @@
 import React from "react";
 import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
+import DataTable from "../components/DataTable.js";
 
 const Dashboard = () =>{
 
-  const { data } = useFetch('http://192.168.1.67:8080/activos/get-all');
+  const { data } = useFetch("http://172.16.14.127:8080/proyecto/get-all");
   console.log(data);
+  // console.log(data.proyecto);
+
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'createdAt', 'updatedAt', 'userId'];
 
   return (
     <div className="container-content">
@@ -13,7 +17,11 @@ const Dashboard = () =>{
         <h1>Dashboard</h1>
       </div>
       <div className="content">
-        <h1>contenido</h1>
+      {data && data.proyecto && data.proyecto.length > 0 ? (
+          <DataTable columns={columns} data={data.proyecto} />
+        ) : (
+          <p>Cargando...</p>
+        )}
       </div>
     </div>
   );
