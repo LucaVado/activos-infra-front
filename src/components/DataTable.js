@@ -1,7 +1,8 @@
 import React from "react";
+import ColumnActions from "./ColumnActions";
 import "../styles/dataTable.css";
-
 const DataTable = ({ columns, data }) => {
+
   return (
     <table className="data-table">
       <thead>
@@ -15,10 +16,15 @@ const DataTable = ({ columns, data }) => {
         {data.map((item, index) => (
           <tr key={index} className={index % 2 === 0 ? 'table-row even' : 'table-row odd'}>
             {columns.map((column, i) => (
-              <div key={i} className="table-cell">
-              {item[column]}
-            </div>
+              <td key={i} className="table-cell">
+                {item[column]}
+              </td>
             ))}
+            <td className="table-cell">
+              <ColumnActions
+                item={item}
+              />
+            </td>
           </tr>
         ))}
       </tbody>

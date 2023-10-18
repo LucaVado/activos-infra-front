@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
 import DataTable from "../components/DataTable.js";
+import {Button, Table} from '@material-ui/core/Button';
 
 const Dashboard = () =>{
 
@@ -9,7 +10,7 @@ const Dashboard = () =>{
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'createdAt', 'updatedAt', 'userId'];
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'createdAt', 'updatedAt', 'userId','Actions'];
 
   return (
     <div className="container-content">
@@ -18,7 +19,7 @@ const Dashboard = () =>{
       </div>
       <div className="content">
       {data && data.proyecto && data.proyecto.length > 0 ? (
-          <DataTable columns={columns} data={data.proyecto} />
+          <Table columns={columns} data={data.proyecto} />
         ) : (
           <p>Cargando...</p>
         )}

@@ -11,7 +11,8 @@
     border-bottom: 1px solid #e0e0e0;
     background: #3D9CFF;
     color: #ffffff;
-    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.75) inset;
+    border-color: #000;
+    /* box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.75) inset; */
   }
   
   .header-cell {
@@ -19,7 +20,8 @@
     padding: 12px;
     font-family: "Roboto Flex", sans-serif;
     font-weight: bold;
-    color: #000;
+    border-color: #000;
+    color: #e0e0e0;
   }
   
   .table-body {
@@ -30,6 +32,7 @@
   .table-row {
     display: flex;
     border-bottom: 1px solid #e0e0e0;
+    align-items: center;
   }
   
   .even {
