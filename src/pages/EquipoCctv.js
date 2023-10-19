@@ -4,7 +4,7 @@ import { useFetch } from "../fetch/useFetch";
 import DataTable from "../components/DataTable";
 
 const EquipoCctv = () =>{
-  const { data } = useFetch("http://172.16.14.127:8080/activos/get-all");
+  const { data } = useFetch("http://localhost:8080/activos/get-all");
   console.log(data);
   // console.log(data.proyecto);
 
