@@ -18,6 +18,12 @@
   .title h1{
     margin-left: 20px;
   }
+
+  .title-table{
+    height: 1.5rem;
+    margin-bottom: 20px;
+  }
+
   .content {
     flex: 1; /* Ocupa el espacio restante verticalmente */
     padding: 10px;

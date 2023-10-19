@@ -14,6 +14,8 @@ import SucursalesPage from "./pages/SucursalesPage";
 import UsersPage from "./pages/UsersPage";
 import Navbar from "./components/Navbar";
 import NuevoProyecto from "./pages/NuevoProyecto";
+import VerProyecto from "./pages/VerProyecto";
+import EditarProyecto from "./pages/EditarProyecto";
 
 const App = () =>{
   return (
@@ -33,6 +35,8 @@ const App = () =>{
               <Route path="/Sucursales" element={<SucursalesPage/>} />
               <Route path="/users" element={<UsersPage/>} />
               <Route path="/nuevo-proyecto" element={<NuevoProyecto/>} />
+              <Route path="/ver-proyecto" element={<VerProyecto/>} />
+              <Route path="/editar-proyecto" element={<EditarProyecto/>} />
             </Routes>
           </Sidebar>        
       </BrowserRouter>
