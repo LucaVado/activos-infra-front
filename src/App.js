@@ -13,6 +13,7 @@ import ProyectosPage from "./pages/ProyectosPage";
 import SucursalesPage from "./pages/SucursalesPage";
 import UsersPage from "./pages/UsersPage";
 import Navbar from "./components/Navbar";
+import NuevoProyecto from "./pages/NuevoProyecto";
 
 const App = () =>{
   return (
@@ -31,6 +32,7 @@ const App = () =>{
               <Route path="/Proyectos" element={<ProyectosPage/>} />
               <Route path="/Sucursales" element={<SucursalesPage/>} />
               <Route path="/users" element={<UsersPage/>} />
+              <Route path="/nuevo-proyecto" element={<NuevoProyecto/>} />
             </Routes>
           </Sidebar>        
       </BrowserRouter>

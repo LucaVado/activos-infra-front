@@ -4,6 +4,7 @@
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #e0e0e0;
+    min-width: 300px;
   }
   
   .table-header {
@@ -22,6 +23,8 @@
     font-weight: bold;
     border-color: #000;
     color: #e0e0e0;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   .table-body {
@@ -48,15 +51,18 @@
     padding: 12px;
     font-family: "Roboto Flex", sans-serif;
     color: #000;
+    max-width: fit-content;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   @media (max-width: 768px) {
-    .data-table {
+    /* .data-table {
       flex-direction: column;
-    }
-    .table-header, .table-row {
+    } */
+    /* .table-header, .table-row {
       flex-direction: column;
-    }
+    } */
     .header-cell, .table-cell {
       padding: 6px;
       font-size: 14px;
