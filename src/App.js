@@ -13,9 +13,9 @@ import ProyectosPage from "./pages/ProyectosPage";
 import SucursalesPage from "./pages/SucursalesPage";
 import UsersPage from "./pages/UsersPage";
 import Navbar from "./components/Navbar";
-import NuevoProyecto from "./pages/NuevoProyecto";
-import VerProyecto from "./pages/VerProyecto";
-import EditarProyecto from "./pages/EditarProyecto";
+import NuevoProyecto from "./pages/proyecto/NuevoProyecto";
+import VerProyecto from "./pages/proyecto/VerProyecto";
+import EditarProyecto from "./pages/proyecto/EditarProyecto";
 
 const App = () =>{
   return (
