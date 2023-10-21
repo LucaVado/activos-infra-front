@@ -14,7 +14,7 @@ const ColumnActions = ({ item, pages }) => {
     };
   
     const handleDelete = () => {
-      fetch(`http://localhost:8080/proyecto/delete-proyecto?id=${item.id}`, {
+      fetch(`http://172.16.14.127:8080/proyecto${pages.delete}?id=${item.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,10 +31,10 @@ const ColumnActions = ({ item, pages }) => {
   
     return (
       <div className="table-cell">
-        <NavLink to={`/ver-proyecto`}><button>
+        <NavLink to={`${pages.view}?id=${item.id}`}><button>
           <img src="/images/icons/icono-view.svg" alt="View" />
         </button></NavLink>
-        <NavLink to={`/editar-proyecto`}><button>
+        <NavLink to={`${pages.edit}?id=${item.id}`}><button>
           <img src="/images/icons/icono-edit.svg" alt="View" />
         </button></NavLink>
         <button onClick={handleDelete}>

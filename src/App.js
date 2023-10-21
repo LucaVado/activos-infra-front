@@ -13,9 +13,12 @@ import ProyectosPage from "./pages/ProyectosPage";
 import SucursalesPage from "./pages/SucursalesPage";
 import UsersPage from "./pages/UsersPage";
 import Navbar from "./components/Navbar";
-import NuevoProyecto from "./pages/NuevoProyecto";
-import VerProyecto from "./pages/VerProyecto";
-import EditarProyecto from "./pages/EditarProyecto";
+import NuevoProyecto from "./pages/proyecto/NuevoProyecto";
+import VerProyecto from "./pages/proyecto/VerProyecto";
+import EditarProyecto from "./pages/proyecto/EditarProyecto";
+import VerActivoCctv from "./pages/equipocctv/VerActivoCctv";
+import NuevoActivoCctv from "./pages/equipocctv/NuevoActivoCctv";
+import EditarActivoCctv from "./pages/equipocctv/EditarActivoCctv";
 
 const App = () =>{
   return (
@@ -37,6 +40,9 @@ const App = () =>{
               <Route path="/nuevo-proyecto" element={<NuevoProyecto/>} />
               <Route path="/ver-proyecto" element={<VerProyecto/>} />
               <Route path="/editar-proyecto" element={<EditarProyecto/>} />
+              <Route path="/ver-activo-cctv" element={<VerActivoCctv/>} />
+              <Route path="/nuevo-activo-cctv" element={<NuevoActivoCctv/>} />
+              <Route path="/editar-activo-cctv" element={<EditarActivoCctv/>} />
             </Routes>
           </Sidebar>        
       </BrowserRouter>

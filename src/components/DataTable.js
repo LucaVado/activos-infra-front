@@ -1,8 +1,9 @@
 import React from "react";
 import ColumnActions from "./ColumnActions";
 import "../styles/dataTable.css";
-const DataTable = ({ columns, data }) => {
+const DataTable = ({ columns, data, pages }) => {
 
+    
   return (
     <table className="data-table">
       <thead>
@@ -23,6 +24,7 @@ const DataTable = ({ columns, data }) => {
             <td className="table-cell">
               <ColumnActions
                 item={item}
+                pages= {pages}
               />
             </td>
           </tr>

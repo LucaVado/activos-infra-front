@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
-export function useFetch(url){
+export function useFetch(url, options = { method: 'GET' }){
     const[data, setData] = useState(null);
 
     useEffect(() => {
         fetch(url, 
             {
+                method: options.method,
                 headers: new Headers({
                     'Content-Type': 'application/json',
                 })
@@ -22,7 +23,7 @@ export function useFetch(url){
             .catch((error) => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
-    }, [url]);
+    }, [url, options.method]);
 
     // useEffect(() => {
     //     fetch(url)

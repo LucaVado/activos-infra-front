@@ -3,7 +3,7 @@ import ColumnActions from "./ColumnActions";
 import "../styles/titleTable.css";
 import { NavLink } from "react-router-dom";
 
-const TitleTable = ({ tableName, page }) => {
+const TitleTable = ({ tableName, page, button }) => {
   return (
     <div className="title-table-container">
       <div className="table-title">
@@ -11,7 +11,7 @@ const TitleTable = ({ tableName, page }) => {
       </div>
       <div className="new-link">
         <NavLink to={page} className="button">
-          <span><h4>+ Nuevo</h4></span>
+          <span><h4>{button}</h4></span>
         </NavLink>
       </div>
     </div>
