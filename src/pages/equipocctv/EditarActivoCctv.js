@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "../../styles/content.css";
 
-const EditarProyecto = () =>{
+const EditarActivoCctv = () =>{
 
   const [nombre, setNombre] = useState("");
   const [fechaEntrada, setFechaEntrada] = useState("");
@@ -31,11 +31,11 @@ const EditarProyecto = () =>{
 
   const handlePost = () => {
     const dataPost = { proyecto:{id:parseInt(id),nombre, fechaEntrada, fechaSalida, userId} };
-    console.log('nombre:', nombre);
-    console.log('fechaEntrada:', fechaEntrada);
-    console.log('fechaSalida:', fechaSalida);
-    console.log('userId:', userId);
-    console.log(dataPost);
+    // console.log('nombre:', nombre);
+    // console.log('fechaEntrada:', fechaEntrada);
+    // console.log('fechaSalida:', fechaSalida);
+    // console.log('userId:', userId);
+    // console.log(dataPost);
     fetch(`http://172.16.14.127:8080/proyecto/post-edit-proyecto?id=${id}`, {
       method: "POST",
       headers: {
@@ -44,7 +44,7 @@ const EditarProyecto = () =>{
       body: JSON.stringify(dataPost),
     })
       .then((response) => {
-        window.location.href = '/';
+        window.location.href = '/equipoCctv';
       })
       .catch((error) => {
         console.error("Hubo un problema al eliminar el registro:", error);
@@ -85,4 +85,4 @@ const EditarProyecto = () =>{
   );
 };
 
-export default EditarProyecto;
+export default EditarActivoCctv;

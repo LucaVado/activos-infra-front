@@ -10,7 +10,7 @@ const Dashboard = () =>{
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'createdAt', 'updatedAt', 'userId','Actions'];
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'userId','Actions'];
   const pages = {
     delete: '/delete-proyecto',
     view: '/ver-proyecto',
@@ -23,7 +23,7 @@ const Dashboard = () =>{
       </div>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName='Proyectos recientes' page='/nuevo-proyecto' />
+          <TitleTable tableName='Proyectos recientes' page='/Proyectos' button='Ir a proyectos'/>
         </div>
         <div>
         {data && data.proyecto && data.proyecto.length > 0 ? (
