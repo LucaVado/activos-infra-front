@@ -69,7 +69,7 @@ const EditarActivoCctv = () => {
   return (
     <div className="container-content">
       <div className="title">
-        <h1>Nuevo Activo CCTV</h1>
+        <h1>Nuevo Activo Alarma</h1>
       </div>
       <div className="content">
         <form class="add-form" action="/" method="">

@@ -1,42 +1,43 @@
 .title-table-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .table-title h3 {
-    border-bottom: 2px solid #212F3D;
-    padding-bottom: 5px;
-    text-decoration: none;
-    color: #212F3D;
-  }
-  
-  .new-link .button {
-    border: none;
-    padding: 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-  }
-  
-  .new-link .button span h4{
-    border-bottom: 2px solid #212F3D;
-    color: #212F3D;
-    padding-bottom: 5px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
 
-  .new-link :hover{
-    background-color: #F4F6F7;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-  }
-  
-  @media (min-width: 768px) {
-    .title-table-container {
-      display: flex;
+.table-title h3 {
+  border-bottom: 2px solid #212F3D;
+  padding-bottom: 5px;
+  text-decoration: none;
+  color: #212F3D;
+}
+
+.new-link .button {
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.new-link .button span h4 {
+  border-bottom: 2px solid #212F3D;
+  color: #212F3D;
+  padding-bottom: 5px;
+}
+
+.new-link :hover {
+  background-color: #F4F6F7;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .title-table-container {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    }
   }
+}

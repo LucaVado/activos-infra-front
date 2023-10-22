@@ -88,20 +88,20 @@ main{
 
 @media (max-width: 768px) {
   .container {
-    /* flex-direction: column; Cambia a apilado en pantallas pequeñas */
+    /* flex-direction: column;  */
   }
 
   .sidebar {
-    width: 100%; /* Ocupa el ancho completo en pantallas pequeñas */
+    width: 100%;
   }
 
-  .top_section {
-    padding: 10px 15px; /* Reducción del espaciado en pantallas pequeñas */
+  .active{
+    background: #3D9CFF;
+    color: #FFFFFF;
   }
-
+  
   .logo-navbar {
-    width: auto; /* Ancho automático en pantallas pequeñas */
-    height: auto; /* Altura automática en pantallas pequeñas */
-    margin-right: 10px; /* Reducción del margen en pantallas pequeñas */
+    margin-left: 0px; 
+    padding: 0;
   }
 }

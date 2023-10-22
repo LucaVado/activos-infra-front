@@ -19,6 +19,12 @@ import EditarProyecto from "./pages/proyecto/EditarProyecto";
 import VerActivoCctv from "./pages/equipocctv/VerActivoCctv";
 import NuevoActivoCctv from "./pages/equipocctv/NuevoActivoCctv";
 import EditarActivoCctv from "./pages/equipocctv/EditarActivoCctv";
+import VerActivoAlarma from "./pages/equipoAlarma/VerActivoAlarma";
+import NuevoActivoAlarma from './pages/equipoAlarma/NuevoActivoAlarma';
+import EditarActivoAlarma from './pages/equipoAlarma/EditarActivoAlarma';
+import VerSucursal from "./pages/sucursales/VerSucursal";
+import NuevaSucursal from "./pages/sucursales/NuevaSucural";
+import EditarSucursal from "./pages/sucursales/EditarSucursal";
 
 const App = () =>{
   return (
@@ -43,6 +49,12 @@ const App = () =>{
               <Route path="/ver-activo-cctv" element={<VerActivoCctv/>} />
               <Route path="/nuevo-activo-cctv" element={<NuevoActivoCctv/>} />
               <Route path="/editar-activo-cctv" element={<EditarActivoCctv/>} />
+              <Route path="/ver-activo-alarma" element={<VerActivoAlarma/>} />
+              <Route path="/nuevo-activo-alarma" element={<NuevoActivoAlarma/>} />
+              <Route path="/editar-activo-alarma" element={<EditarActivoAlarma/>} />
+              <Route path="/ver-sucursal" element={<VerSucursal/>} />
+              <Route path="/nueva-sucursal" element={<NuevaSucursal/>} />
+              <Route path="/editar-sucursal" element={<EditarSucursal/>} />
             </Routes>
           </Sidebar>        
       </BrowserRouter>
