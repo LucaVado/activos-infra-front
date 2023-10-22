@@ -3,13 +3,14 @@ import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
 import TitleTable from "../components/TitleTable";
 import DataTable from "../components/DataTable";
+import API_BASE_URL from "../config";
 
 const Users = () =>{
-  const { data } = useFetch("http://172.16.14.127:8080/users/get-all");
+  const { data } = useFetch(`${API_BASE_URL}/users/get-all`);
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'Puesto','sucursal', 'Actions'];
+  const columns = ['id', 'nombre', 'Puesto','sucursal'];
   const pages = {
     delete: '/delete-activo',
     view: '/ver-activo',

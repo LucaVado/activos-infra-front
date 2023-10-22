@@ -1,39 +1,44 @@
+.table-container{
+  width: 100%;
+  overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
+  min-width: 600px;
+  padding-top: 10px;
+  margin: auto;
+}
+
 .data-table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #e0e0e0;
-  min-width: 300px;
+  
+}
+.header-cell, .table-cell {
+  text-align: center;
 }
 
 .table-header {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   border-bottom: 1px solid #e0e0e0;
   background: #3D9CFF;
   color: #ffffff;
 }
 
 .header-cell {
-  padding: 12px;
+  padding: 8px;
   font-family: "Roboto Flex", sans-serif;
   font-weight: bold;
   border-color: #000;
-  color: #e0e0e0;
-}
+} 
 
 .table-body {
-  display: block;
 }
 
 .table-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   border-bottom: 1px solid #e0e0e0;
   align-items: center;
 }
 
 .even {
-  background-color: #f9f9f9;
+  background-color: #F4F6F7;
 }
 
 .odd {
@@ -41,9 +46,24 @@
 }
 
 .table-cell {
-  padding: 12px;
+  padding: 2px;
   font-family: "Roboto Flex", sans-serif;
   color: #000;
+}
+
+.actions-button{
+  width: 50px; 
+  height: 50px; 
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 8px;
+}
+
+.actions-button :hover{
+  cursor: pointer;
+  background-color: #D7DBDD;
+  border-radius: 4px;
 }
 
 @media (max-width: 768px) {

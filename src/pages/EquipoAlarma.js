@@ -3,17 +3,18 @@ import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
 import TitleTable from "../components/TitleTable";
 import DataTable from "../components/DataTable";
+import API_BASE_URL from "../config";
 
 const EquipoAlarma = () =>{
-  const { data } = useFetch("http://172.16.14.127:8080/activos/get-all");
+  const { data } = useFetch(`${API_BASE_URL}/activos/get-all`);
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'userId','Actions'];
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'userId'];
   const pages = {
-    delete: '/delete-activo',
-    view: '/ver-activo',
-    edit: '/editar-activo'
+    delete: 'activos/delete-activo',
+    view: '/ver-activo-alarma',
+    edit: '/editar-activo-alarma'
 }
   return (
     <div className="container-content">

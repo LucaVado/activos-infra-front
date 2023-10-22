@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/content.css";
 import { useState } from "react";
+import API_BASE_URL from "../../config";
 
 const NuevoProyecto = () =>{
     const [nombre, setNombre] = useState("");
@@ -15,7 +16,7 @@ const NuevoProyecto = () =>{
         console.log('fechaSalida:', fechaSalida);
         console.log('userId:', userId);
         console.log(data);
-        fetch(`http://172.16.14.127:8080/proyecto/post-proyecto`, {
+        fetch(`${API_BASE_URL}/proyecto/post-proyecto`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

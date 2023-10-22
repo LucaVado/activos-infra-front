@@ -3,15 +3,16 @@ import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
 import DataTable from "../components/DataTable";
 import TitleTable from "../components/TitleTable";
+import API_BASE_URL from "../config";
 
 const EquipoCctv = () =>{
-  const { data } = useFetch("http://172.16.14.127:8080/activos/get-all");
+  const { data } = useFetch(`${API_BASE_URL}/activos/get-all`);
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'userId','Actions'];
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'userId'];
   const pages = {
-    delete: '/delete-activo',
+    delete: 'activos/delete-activo',
     view: '/ver-activo-cctv',
     edit: '/editar-activo-cctv'
 }

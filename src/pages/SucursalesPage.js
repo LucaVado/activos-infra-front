@@ -3,17 +3,18 @@ import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
 import TitleTable from "../components/TitleTable";
 import DataTable from "../components/DataTable";
+import API_BASE_URL from "../config";
 
 const Sucursales = () =>{
-  const { data } = useFetch("http://172.16.14.127:8080/sucursal/get-all");
+  const { data } = useFetch(`${API_BASE_URL}/sucursal/get-all`);
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id','iata', 'nombre', 'estado','Actions'];
+  const columns = ['id','iata', 'nombre', 'estado'];
   const pages = {
-    delete: '/delete-activo',
-    view: '/ver-activo',
-    edit: '/editar-activo'
+    delete: 'sucursal/delete-sucursal',
+    view: '/ver-sucursal',
+    edit: '/editar-sucursal'
 }
   return (
     <div className="container-content">
@@ -22,7 +23,7 @@ const Sucursales = () =>{
       </div>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName='Activos alarma' page='/nuevo-activo-alarma' button='+ Nuevo'/>
+          <TitleTable tableName='Sucursales' page='/nueva-sucursal' button='+ Nuevo'/>
         </div>
         <div>
         {data && data.sucursal && data.sucursal.length > 0 ? (

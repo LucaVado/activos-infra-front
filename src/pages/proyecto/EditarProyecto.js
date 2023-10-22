@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
+import API_BASE_URL from "../../config";
 import "../../styles/content.css";
 
 const EditarProyecto = () =>{
@@ -15,7 +16,7 @@ const EditarProyecto = () =>{
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
-  const { data } = useFetch(`http://172.16.14.127:8080/proyecto/get-proyecto?id=${id}`, {method: 'POST'});
+  const { data } = useFetch(`${API_BASE_URL}/proyecto/get-proyecto?id=${id}`, {method: 'POST'});
 
   // nombre = setNombre(data.proyecto.nombre);
   // fechaEntrada = setFechaEntrada(data.proyecto.fechaEntrada);
@@ -36,7 +37,7 @@ const EditarProyecto = () =>{
     console.log('fechaSalida:', fechaSalida);
     console.log('userId:', userId);
     console.log(dataPost);
-    fetch(`http://172.16.14.127:8080/proyecto/post-edit-proyecto?id=${id}`, {
+    fetch(`${API_BASE_URL}/proyecto/post-edit-proyecto?id=${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
