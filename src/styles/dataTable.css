@@ -71,6 +71,14 @@
     padding: 6px;
     font-size: 14px;
   }
+
+  .table-container{
+    width: 100%;
+    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
+    min-width: 300px;
+    padding-top: 10px;
+    margin: auto;
+  }
 }
 
 /* .data-table {

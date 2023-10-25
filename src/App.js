@@ -25,6 +25,9 @@ import EditarActivoAlarma from './pages/equipoAlarma/EditarActivoAlarma';
 import VerSucursal from "./pages/sucursales/VerSucursal";
 import NuevaSucursal from "./pages/sucursales/NuevaSucural";
 import EditarSucursal from "./pages/sucursales/EditarSucursal";
+import VerUser from "./pages/user/VerUser";
+import NuevoUser from "./pages/user/NuevoUser";
+import EditarUser from "./pages/user/EditarUser";
 
 const App = () =>{
   return (
@@ -55,6 +58,9 @@ const App = () =>{
               <Route path="/ver-sucursal" element={<VerSucursal/>} />
               <Route path="/nueva-sucursal" element={<NuevaSucursal/>} />
               <Route path="/editar-sucursal" element={<EditarSucursal/>} />
+              <Route path="/ver-user" element={<VerUser/>} />
+              <Route path="/nuevo-user" element={<NuevoUser/>} />
+              <Route path="/editar-user" element={<EditarUser/>} />
             </Routes>
           </Sidebar>        
       </BrowserRouter>
