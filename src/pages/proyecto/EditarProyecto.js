@@ -4,6 +4,7 @@ import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
 import API_BASE_URL from "../../config";
+import "../../styles/inputForms.css";
 import "../../styles/content.css";
 
 const EditarProyecto = () =>{
@@ -45,7 +46,7 @@ const EditarProyecto = () =>{
       body: JSON.stringify(dataPost),
     })
       .then((response) => {
-        window.location.href = '/';
+        window.location.href = '/proyectos';
       })
       .catch((error) => {
         console.error("Hubo un problema al eliminar el registro:", error);
@@ -79,7 +80,7 @@ const EditarProyecto = () =>{
                 <input type="date" name="fechaSalida" id="fechaSalida" value={fechaSalida} onChange={(e) => setFechaSalida(e.target.value)}/>
             </div>
 
-            <button class="btn" type="button" onClick={handlePost}>Editar</button>
+            <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Editar</button></div>
         </form>
       </div>
     </div>

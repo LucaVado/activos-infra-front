@@ -10,7 +10,7 @@ const ColumnActions = ({ item, pages }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-      },
+      }
     })
       .then((response) => {
         console.log(`Eliminando el registro con ID: ${item.id}`);

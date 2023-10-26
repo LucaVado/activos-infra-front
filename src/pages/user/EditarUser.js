@@ -3,48 +3,44 @@ import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
+import "../../styles/inputForms.css";
 import "../../styles/content.css";
 import API_BASE_URL from "../../config";
 
 const EditarUser = () => {
 
-  const [nombre, setNombre] = useState("");
-  const [numeroSerie, setNumeroSerie] = useState("");
-  const [numeroActivo, setNumeroActivo] = useState("");
-  const [fechaEntrada, setFechaEntrada] = useState("");
-  const [fechaSalida, setFechaSalida] = useState("");
-  const [estatus, setEstatus] = useState("Entrada");
-  const [folio, setFolio] = useState("");
-  const [guia, setGuia] = useState("");
-  const [razon, setRazon] = useState("");
-  const [userId, setUserId] = useState(1);
-  const [tipoActivoId, setTipoActivoId] = useState(1);
-  const [proyectoId, setProyectoId] = useState(1);
+    const [nombre, setNombre] = useState("");
+    const [apellidoPaterno, setApellidoPaterno] = useState("");
+    const [apellidoMaterno, setApellidoMaterno] = useState("");
+    const [numeroEmpleado, setNumeroEmpleado] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [password, setPassword] = useState("Paquete2023.");
+    const [tipoUsuario, setTipoUsuario] = useState("Usuario");
+    const [sucursalId, setSucursalId] =  useState(1);
+    const [departamentoId, setDepartamentoId] =useState(1);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
-  const { data } = useFetch(`${API_BASE_URL}/activos/get-activo?id=${id}`, { method: 'POST' });
+  const { data } = useFetch(`${API_BASE_URL}/users/get-user?id=${id}`, { method: 'POST'});
 
   useEffect(() => {
     console.log(data);
-    if (data && data.activo) {
-      setNombre(data.activo.nombre);
-      setNumeroSerie(data.activo.numeroSerie);
-      setNumeroActivo(data.activo.numeroActivo);
-      setFechaEntrada(data.activo.fechaEntrada.substring(0, 10));
-      setFechaSalida(data.activo.fechaEntrada.substring(0, 10));
-      setEstatus(data.activo.estatus);
-      setFolio(data.activo.folio);
-      setGuia(data.activo.guia);
-      setRazon(data.activo.razon);
+    if (data && data.user) {
+      setNombre(data.user.nombre);
+      setApellidoPaterno(data.user.apellidoPaterno);
+      setApellidoMaterno(data.user.apellidoMaterno);
+      setNumeroEmpleado(data.user.numeroEmpleado);
+      setCorreo(data.user.correo);
+      setPassword(data.user.password);
+      setTipoUsuario(data.user.tipoUsuario);
     }
   }, [data]);
 
   const handlePost = () => {
-    const dataPost = { activo: { id: parseInt(data.activo.id), nombre, numeroSerie, numeroActivo, fechaEntrada, fechaSalida, estatus, folio, guia, razon, userId, tipoActivoId, proyectoId } };
+    const dataPost = { user:{id: parseInt(id), nombre, apellidoPaterno, apellidoMaterno, numeroEmpleado, correo, password, tipoUsuario, sucursalId, departamentoId} };
 
-    fetch(`${API_BASE_URL}/activos/post-edit-activo?id=${id}`, {
+    fetch(`${API_BASE_URL}/users/post-edit-user?id=${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,10 +48,10 @@ const EditarUser = () => {
       body: JSON.stringify(dataPost),
     })
       .then((response) => {
-        window.location.href = '/equipoCctv';
+        // window.location.href = '/users';
       })
       .catch((error) => {
-        console.error("Hubo un problema al eliminar el registro:", error);
+        console.error("Hubo un problema al editar el registro:", error);
       });
   };
 
@@ -63,62 +59,49 @@ const EditarUser = () => {
     return <p>Cargando...</p>;
   }
 
-  if (!data.activo) {
-    return <p>Proyecto no encontrado</p>;
+  if (!data.user) {
+    return <p>Usuario no encontrado</p>;
   }
   return (
     <div className="container-content">
       <div className="title">
-        <h1>Nuevo Activo CCTV</h1>
+        <h1>Editar Usuario</h1>
       </div>
       <div className="content">
-        <form class="add-form" action="/" method="">
-          <div class="form-control">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-          </div>
-          <div class="form-control">
-            <label for="numeroSerie">Numero de serie</label>
-            <input type="text" name="numeroSerie" id="numeroSerie" value={numeroSerie} onChange={(e) => setNumeroSerie(e.target.value)} />
-          </div>
-          <div class="form-control">
-            <label for="numeroActivo">Numero de Activo</label>
-            <input type="text" name="numeroActivo" id="numeroActivo" value={numeroActivo} onChange={(e) => setNumeroActivo(e.target.value)} />
-          </div>
-          <div class="form-control">
-            <label for="fechaEntrada">Fecha de Entrada</label>
-            <input type="date" name="fechaEntrada" id="fechaEntrada" value={fechaEntrada} onChange={(e) => setFechaEntrada(e.target.value)} />
-          </div>
-          <div class="form-control">
-            <label for="fechaSalida">Fecha de Salida</label>
-            <input type="date" name="fechaSalida" id="fechaSalida" value={fechaSalida} onChange={(e) => setFechaSalida(e.target.value)} />
-          </div>
-          <div class="form-control">
-            <label for="estatus">Estatus</label>
-            <select name="estatus" id="estatus" value={estatus} onChange={(e) => setEstatus(e.target.value)}>
-              <option value="Entrada">Entrada</option>
-              <option value="EnTransito" selected>en tránsito</option>
-              <option value="PorRecibir" >Por recibir llegada</option>
-            </select>
-          </div>
-          <div class="form-control">
-            <label for="folio">folio</label>
-            <input type="text" name="folio" id="folio" value={folio} onChange={(e) => setFolio(e.target.value)} />
-          </div>
-          <div class="form-control">
-            <label for="guia">guia</label>
-            <input type="text" name="guia" id="guia" value={guia} onChange={(e) => setGuia(e.target.value)} />
-          </div>
-          <div class="form-control">
-            <label for="razon">razon</label>
-            <select name="razon" id="razon" value={razon} onChange={(e) => setRazon(e.target.value)}>
-              <option value="Incremento">Incremento</option>
-              <option value="Sustitucion" selected>Sustitucion</option>
-              <option value="Apertura" >Apertura</option>
-            </select>
-          </div>
+      <form class="add-form" action="/" method="">
+            <div class="form-control">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+            </div>
+            <div class="form-control">
+                <label for="apellidoPaterno">Apellido Paterno</label>
+                <input type="text" name="apellidoPaterno" id="apellidoPaterno" value={apellidoPaterno} onChange={(e) => setApellidoPaterno(e.target.value)}/>
+            </div>
+            <div class="form-control">
+                <label for="apellidoMaterno">Apellido Materno</label>
+                <input type="text" name="apellidoMaterno" id="apellidoMaterno" value={apellidoMaterno} onChange={(e) => setApellidoMaterno(e.target.value)}/>
+            </div>
+            <div class="form-control">
+                <label for="numeroEmpleado">Numero de empleado</label>
+                <input type="text" name="numeroEmpleado" id="numeroEmpleado" value={numeroEmpleado} onChange={(e) => setNumeroEmpleado(e.target.value)}/>
+            </div>
+            <div class="form-control">
+                <label for="correo">Correo</label>
+                <input type="text" name="correo" id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)}/>
+            </div>
+            <div class="form-control">
+                <label for="password">password</label>
+                <input type="text" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            </div>
+            <div class="form-control">
+                <label for="tipoUsuario">Tipo</label>
+                <select name="tipoUsuario" id="tipoUsuario" value={tipoUsuario} onChange={(e) => setTipoUsuario(e.target.value)}>
+                    <option value="Admin">Administrador</option>
+                    <option value="User" selected>Usuario</option>
+                </select>
+            </div>
 
-          <button class="btn" type="button" onClick={handlePost}>Crear</button>
+            <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Crear</button></div>
         </form>
       </div>
     </div>

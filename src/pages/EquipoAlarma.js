@@ -6,11 +6,11 @@ import DataTable from "../components/DataTable";
 import API_BASE_URL from "../config";
 
 const EquipoAlarma = () =>{
-  const { data } = useFetch(`${API_BASE_URL}/activos/get-all`);
+  const { data } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=Alarma`);
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'userId'];
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
   const pages = {
     delete: 'activos/delete-activo',
     view: '/ver-activo-alarma',

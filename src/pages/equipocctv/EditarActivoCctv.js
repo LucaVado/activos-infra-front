@@ -4,6 +4,7 @@ import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
 import "../../styles/content.css";
+import "../../styles/inputForms.css";
 import API_BASE_URL from "../../config";
 
 const EditarActivoCctv = () => {
@@ -118,7 +119,7 @@ const EditarActivoCctv = () => {
             </select>
           </div>
 
-          <button class="btn" type="button" onClick={handlePost}>Crear</button>
+          <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Editar</button></div>
         </form>
       </div>
     </div>

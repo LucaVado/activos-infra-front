@@ -6,11 +6,11 @@ import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
 
 const EquipoCctv = () =>{
-  const { data } = useFetch(`${API_BASE_URL}/activos/get-all`);
+  const { data } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=CCTV`);
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'userId'];
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
   const pages = {
     delete: 'activos/delete-activo',
     view: '/ver-activo-cctv',
@@ -32,7 +32,7 @@ const EquipoCctv = () =>{
           <p>Cargando...</p>
         )}
         </div>
-        
+        {/* <input type="text" name="tipo" id="tipo" value='CCTV'/> */}
       </div>
     </div>
   );
