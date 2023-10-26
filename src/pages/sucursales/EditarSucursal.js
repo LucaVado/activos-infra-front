@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
+import "../../styles/inputForms.css";
 import "../../styles/content.css";
 import API_BASE_URL from "../../config";
 
@@ -84,7 +85,7 @@ const EditarSucursal = () => {
                 <input type="text" name="estado" id="estado" value={estado} onChange={(e) => setEstado(e.target.value)}/>
             </div>
 
-            <button class="btn" type="button" onClick={handlePost}>Crear</button>
+            <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Editar</button></div>
         </form>
       </div>
     </div>

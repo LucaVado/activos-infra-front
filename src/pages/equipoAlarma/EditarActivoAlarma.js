@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
+import "../../styles/inputForms.css";
 import "../../styles/content.css";
 import API_BASE_URL from "../../config";
 
@@ -52,7 +53,7 @@ const EditarActivoCctv = () => {
       body: JSON.stringify(dataPost),
     })
       .then((response) => {
-        window.location.href = '/equipoCctv';
+        window.location.href = '/equipoAlarma';
       })
       .catch((error) => {
         console.error("Hubo un problema al eliminar el registro:", error);
@@ -69,7 +70,7 @@ const EditarActivoCctv = () => {
   return (
     <div className="container-content">
       <div className="title">
-        <h1>Nuevo Activo Alarma</h1>
+        <h1>Editar {nombre}</h1>
       </div>
       <div className="content">
         <form class="add-form" action="/" method="">
@@ -118,7 +119,7 @@ const EditarActivoCctv = () => {
             </select>
           </div>
 
-          <button class="btn" type="button" onClick={handlePost}>Crear</button>
+          <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Editar</button></div>
         </form>
       </div>
     </div>

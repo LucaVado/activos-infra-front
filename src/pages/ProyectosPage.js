@@ -12,7 +12,7 @@ const Proyectos = () =>{
 
   const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'userId'];
   const pages = {
-    delete: '/delete-proyecto',
+    delete: 'proyecto/delete-proyecto',
     view: '/ver-proyecto',
     edit: '/editar-proyecto'
 }

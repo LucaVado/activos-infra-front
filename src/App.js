@@ -28,6 +28,7 @@ import EditarSucursal from "./pages/sucursales/EditarSucursal";
 import VerUser from "./pages/user/VerUser";
 import NuevoUser from "./pages/user/NuevoUser";
 import EditarUser from "./pages/user/EditarUser";
+import NuevoModeloActivo from "./pages/modeloActivo/NuevoModelo";
 
 const App = () =>{
   return (
@@ -61,6 +62,7 @@ const App = () =>{
               <Route path="/ver-user" element={<VerUser/>} />
               <Route path="/nuevo-user" element={<NuevoUser/>} />
               <Route path="/editar-user" element={<EditarUser/>} />
+              <Route path="/nuevo-modelo" element={<NuevoModeloActivo/>} />
             </Routes>
           </Sidebar>        
       </BrowserRouter>

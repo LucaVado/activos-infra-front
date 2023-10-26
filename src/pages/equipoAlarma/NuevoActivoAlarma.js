@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/content.css";
+import "../../styles/inputForms.css";
 import { useState } from "react";
 import API_BASE_URL from "../../config";
 
@@ -32,7 +33,7 @@ const NuevoActivoCctv = () =>{
           body: JSON.stringify(data),
         })
           .then((response) => {
-            window.location.href = '/equipoCctv';
+            window.location.href = '/equipoAlarma';
           })
           .catch((error) => {
             console.error("Hubo un problema al eliminar el registro:", error);
@@ -90,7 +91,7 @@ const NuevoActivoCctv = () =>{
                 </select>
             </div>
 
-            <button class="btn" type="button" onClick={handlePost}>Crear</button>
+            <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Crear</button></div>
         </form>
       </div>
     </div>

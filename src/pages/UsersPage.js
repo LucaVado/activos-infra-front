@@ -10,9 +10,9 @@ const Users = () => {
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'Puesto', 'sucursal'];
+  const columns = ['id', 'nombre', 'tipoUsuario', 'correo'];
   const pages = {
-    delete: '/delete-user',
+    delete: 'users/delete-user',
     view: '/ver-user',
     edit: '/editar-user'
   }
