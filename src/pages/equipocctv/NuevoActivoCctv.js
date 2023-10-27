@@ -14,10 +14,10 @@ const NuevoActivoCctv = () => {
     const [estatus, setEstatus] = useState("Entrada");
     const [folio, setFolio] = useState("");
     const [guia, setGuia] = useState("");
-    const [razon, setRazon] = useState("");
+    const [razon, setRazon] = useState("Incremento");
     const [userId, setUserId] = useState(1);
-    const [tipoActivoId, setTipoActivoId] = useState(1);
-    const [proyectoId, setProyectoId] = useState(1);
+    const [tipoActivoId, setTipoActivoId] = useState(5);
+    const [proyectoId, setProyectoId] = useState(2);
     const [modelo, setModelo] = useState("");
 
     const handlePost = () => {

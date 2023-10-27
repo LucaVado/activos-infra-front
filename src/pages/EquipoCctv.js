@@ -5,7 +5,7 @@ import DataTable from "../components/DataTable";
 import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
 
-const EquipoCctv = () =>{
+const EquipoCctv = () => {
   const { data } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=CCTV`);
   console.log(data);
   // console.log(data.proyecto);
@@ -15,7 +15,7 @@ const EquipoCctv = () =>{
     delete: 'activos/delete-activo',
     view: '/ver-activo-cctv',
     edit: '/editar-activo-cctv'
-}
+  }
   return (
     <div className="container-content">
       <div className="title">
@@ -23,16 +23,15 @@ const EquipoCctv = () =>{
       </div>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName='Activos cctv' page='/nuevo-activo-cctv' button='+ Nuevo'/>
+          <TitleTable tableName='Activos cctv' page='/nuevo-activo-cctv' button='+ Nuevo' />
         </div>
         <div>
-        {data && data.activos && data.activos.length > 0 ? (
-          <DataTable columns={columns} data={data.activos} pages={pages}/>
-        ) : (
-          <p>Cargando...</p>
-        )}
+          {data && data.activos && data.activos.length > 0 ? (
+            <DataTable columns={columns} data={data.activos} pages={pages} />
+          ) : (
+            <p>Cargando...</p>
+          )}
         </div>
-        {/* <input type="text" name="tipo" id="tipo" value='CCTV'/> */}
       </div>
     </div>
   );
