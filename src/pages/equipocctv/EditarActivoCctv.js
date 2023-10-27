@@ -17,7 +17,7 @@ const EditarActivoCctv = () => {
   const [estatus, setEstatus] = useState("Entrada");
   const [folio, setFolio] = useState("");
   const [guia, setGuia] = useState("");
-  const [razon, setRazon] = useState("");
+  const [razon, setRazon] = useState("Incremento");
   const [userId, setUserId] = useState(1);
   const [tipoActivoId, setTipoActivoId] = useState(1);
   const [proyectoId, setProyectoId] = useState(1);
@@ -115,7 +115,6 @@ const EditarActivoCctv = () => {
             <select name="razon" id="razon" value={razon} onChange={(e) => setRazon(e.target.value)}>
               <option value="Incremento">Incremento</option>
               <option value="Sustitucion" selected>Sustitucion</option>
-              <option value="Apertura" >Apertura</option>
             </select>
           </div>
 
