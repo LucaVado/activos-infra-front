@@ -10,7 +10,7 @@ const Users = () => {
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'tipoUsuario', 'correo'];
+  const columns = ['numeroEmpleado', 'nombreCompleto', 'correo','sucursal', 'tipoUsuario'];
   const pages = {
     delete: 'users/delete-user',
     view: '/ver-user',

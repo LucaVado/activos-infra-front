@@ -15,10 +15,25 @@ const NuevoActivoCctv = () => {
     const [folio, setFolio] = useState("");
     const [guia, setGuia] = useState("");
     const [razon, setRazon] = useState("Incremento");
+    const [codigo, setCodigo] = useState("");
     const [userId, setUserId] = useState(1);
     const [tipoActivoId, setTipoActivoId] = useState(5);
     const [proyectoId, setProyectoId] = useState(2);
     const [modelo, setModelo] = useState("");
+
+    const handleFindCode= (codigo) =>{
+        console.log(codigo);
+
+        fetch(`${API_BASE_URL}/tipo-activo/get-codigo?codigo=${codigo}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setNombre(data.tipo.nombre);
+            setModelo(data.tipo.modelo);
+            setTipoActivoId(data.tipo.id);
+        })
+        .catch(error => console.error('Ha ocurrido un error:', error));
+    }
 
     const handlePost = () => {
         const data = { content: { nombre, numeroSerie, numeroActivo, fechaEntrada, fechaSalida, estatus, folio, guia, razon, userId, tipoActivoId, proyectoId } };
@@ -54,11 +69,15 @@ const NuevoActivoCctv = () => {
                 </div>
                 <form class="add-form" action="/" method="">
                 <div class="form-control">
-                        <label for="modelo">Modelo</label>
+                        <label for="codigo">Codigo</label>
                         <div>
-                        <input type="text" name="modelo" id="modelo" value={modelo} onChange={(e) => setModelo(e.target.value)} />
-                        <button class="btn-buscar-modelo" type="button" onClick="">Buscar modelo</button>
+                        <input type="text" name="codigo" id="codigo" value={codigo} onChange={(e) => setCodigo(e.target.value)} />
+                        <button class="btn-buscar-modelo" type="button" onClick={() => handleFindCode(codigo)}>Buscar codigo</button>
                         </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="modelo">Modelo</label>
+                        <input type="text" name="modelo" id="modelo" value={modelo} onChange={(e) => setModelo(e.target.value)} />
                     </div>
                     <div class="form-control">
                         <label for="numeroSerie">Numero de serie</label>

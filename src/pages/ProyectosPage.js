@@ -10,7 +10,7 @@ const Proyectos = () =>{
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'userId'];
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'guia', 'razon', 'destino'];
   const pages = {
     delete: 'proyecto/delete-proyecto',
     view: '/ver-proyecto',

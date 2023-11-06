@@ -10,7 +10,7 @@ const Sucursales = () =>{
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id','iata', 'nombre', 'estado'];
+  const columns = ['id','iata', 'nombre', 'estado', 'latitud', 'longitud'];
   const pages = {
     delete: 'sucursal/delete-sucursal',
     view: '/ver-sucursal',

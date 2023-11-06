@@ -7,7 +7,7 @@ import API_BASE_URL from "../../config";
 
 const NuevoModeloActivo = () => {
     const [nombre, setNombre] = useState("");
-    const [tipo, setTipo] = useState("");
+    const [tipo, setTipo] = useState("CCTV");
     const [codigo, setCodigo] = useState("");
     const [modelo, setModelo] = useState("");
     const [userId, setUserId] = useState(1);
@@ -38,12 +38,12 @@ const NuevoModeloActivo = () => {
                 <form class="add-form" action="/" method="">
                 <div class="form-control">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                        <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required/>
                     </div>
                 <div class="form-control">
                         <label for="modelo">Modelo</label>
                         <div>
-                        <input type="text" name="modelo" id="modelo" value={modelo} onChange={(e) => setModelo(e.target.value)} />
+                        <input type="text" name="modelo" id="modelo" value={modelo} onChange={(e) => setModelo(e.target.value)} required/>
                         </div>
                     </div>
                     <div class="form-control">
@@ -55,7 +55,7 @@ const NuevoModeloActivo = () => {
                     </div>
                     <div class="form-control">
                         <label for="codigo">Codigo</label>
-                        <input type="text" name="codigo" id="codigo" value={codigo} onChange={(e) => setCodigo(e.target.value)} />
+                        <input type="text" name="codigo" id="codigo" value={codigo} onChange={(e) => setCodigo(e.target.value)} required/>
                     </div>
                     <div class="form-control"></div>
 
