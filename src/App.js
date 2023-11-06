@@ -2,6 +2,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
+import { ToastContainer } from "react-toastify";
 import Sidebar from './components/Sidebar';
 import Dashboard from "./pages/Dashboard";
 import EquipoCctv from "./pages/EquipoCctv";
@@ -33,6 +34,7 @@ import NuevoModeloActivo from "./pages/modeloActivo/NuevoModelo";
 const App = () =>{
   return (
     <div>
+      <ToastContainer />
       <Navbar />
       <div>
       <BrowserRouter>

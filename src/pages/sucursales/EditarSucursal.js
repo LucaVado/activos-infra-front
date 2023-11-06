@@ -9,12 +9,19 @@ import API_BASE_URL from "../../config";
 
 const EditarSucursal = () => {
 
-    const [nombre, setNombre] = useState("");
-    const [iata, setIata] = useState("");
-    const [latitud, setLatitud] = useState("");
-    const [longitud, setLongitud] = useState("");
-    const [estado, setEstado] = useState("");
-    const [userId, setUserId] = useState(1);
+  const [nombre, setNombre] = useState("");
+  const [iata, setIata] = useState("");
+  const [latitud, setLatitud] = useState(0);
+  const [longitud, setLongitud] = useState(0);
+  const [estado, setEstado] = useState("Sinaloa");
+  const [userId, setUserId] = useState(1);
+
+  const estadosMexicanos = [
+    "Aguascalientes", "Baja California", "Baja California Sur", "Campeche",
+    "Chiapas", "Chihuahua", "Ciudad de México", "Coahuila", "Colima", "Durango", "Guanajuato", "Guerrero", "Hidalgo",
+    "Jalisco", "México", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo",
+    "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"
+  ];
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -63,29 +70,35 @@ const EditarSucursal = () => {
         <h1>Nueva Sucursal</h1>
       </div>
       <div className="content">
-      <form class="add-form" action="/" method="">
-            <div class="form-control">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
-            </div>
-            <div class="form-control">
-                <label for="iata">IATA</label>
-                <input type="text" name="iata" id="iata" value={iata} onChange={(e) => setIata(e.target.value)}/>
-            </div>
-            <div class="form-control">
-                <label for="latitud">Latitud</label>
-                <input type="text" name="latitud" id="latitud" value={latitud} onChange={(e) => setLatitud(e.target.value)}/>
-            </div>
-            <div class="form-control">
-                <label for="longitud">Longitud</label>
-                <input type="text" name="longitud" id="longitud" value={longitud} onChange={(e) => setLongitud(e.target.value)}/>
-            </div>
-            <div class="form-control">
-                <label for="estado">Estado</label>
-                <input type="text" name="estado" id="estado" value={estado} onChange={(e) => setEstado(e.target.value)}/>
-            </div>
+        <form class="add-form" action="/" method="">
+          <div class="form-control">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+          </div>
+          <div class="form-control">
+            <label for="iata">IATA</label>
+            <input type="text" name="iata" id="iata" value={iata} onChange={(e) => setIata(e.target.value)} />
+          </div>
+          <div class="form-control">
+            <label for="latitud">Latitud</label>
+            <input type="text" name="latitud" id="latitud" value={latitud} onChange={(e) => setLatitud(e.target.value)} />
+          </div>
+          <div class="form-control">
+            <label for="longitud">Longitud</label>
+            <input type="text" name="longitud" id="longitud" value={longitud} onChange={(e) => setLongitud(e.target.value)} />
+          </div>
+          <div class="form-control">
+            <label for="estado">Estado</label>
+            <select value={estado} onChange={(e) => setEstado(e.target.value)}>
+              {estadosMexicanos.map((estado, index) => (
+                <option key={index} value={estado}>
+                  {estado}
+                </option>
+              ))}
+            </select>
+          </div>
 
-            <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Editar</button></div>
+          <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Editar</button></div>
         </form>
       </div>
     </div>
