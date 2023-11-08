@@ -13,8 +13,8 @@ const PorRevisarLlegada = () => {
   const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
   const pages = {
     delete: 'activos/delete-activo',
-    view: '/ver-activo-cctv',
-    edit: '/editar-activo-cctv'
+    view: '/ver-activo',
+    edit: '/editar-activo'
   }
   if (!data) {
     return <p>Cargando...</p>;

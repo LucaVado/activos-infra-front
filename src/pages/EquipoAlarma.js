@@ -10,11 +10,11 @@ const EquipoAlarma = () =>{
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
+  const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon'];
   const pages = {
     delete: 'activos/delete-activo',
-    view: '/ver-activo-alarma',
-    edit: '/editar-activo-alarma'
+    view: '/ver-activo',
+    edit: '/editar-activo'
 }
   return (
     <div className="container-content">
@@ -23,7 +23,7 @@ const EquipoAlarma = () =>{
       </div>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName='Activos alarma' page='/nuevo-activo-alarma' button='+ Nuevo'/>
+          <TitleTable tableName='Activos alarma' page='/nuevo-activo' button='+ Nuevo'/>
         </div>
         <div>
         {data && data.activos && data.activos.length > 0 ? (

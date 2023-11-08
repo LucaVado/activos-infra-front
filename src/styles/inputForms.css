@@ -57,9 +57,9 @@
     cursor: pointer;
 }
 
-.btn-buscar-modelo :hover{
-    background-color: #3D9CFF;
-
+.btn-buscar-modelo:hover{
+    background-color: #2C7AB3;
+    
 }
 
 .btn{
@@ -71,7 +71,12 @@
     border: none;
     font-weight: bold;
     font-size: 16px;
+    cursor: pointer;
     font-family: 'Roboto Flex', sans-serif;
+}
+
+.btn:hover{
+    background-color: #3E8F6B;
 }
 
 @media (max-width: 768px) {

@@ -30,13 +30,13 @@ const Dashboard = () => {
     {
       titulo: "Div 3",
       cantidad: 45
-    },{
+    }, {
       titulo: "Div 4",
       cantidad: 78
-    },{
+    }, {
       titulo: "Div 5",
       cantidad: 9
-    },{
+    }, {
       titulo: "Div 6",
       cantidad: 345
     }

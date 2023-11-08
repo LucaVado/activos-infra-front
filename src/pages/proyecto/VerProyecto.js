@@ -34,7 +34,9 @@ const VerProyecto = () => {
       </div>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName={`Activos ${data.proyecto.nombre}`} page={`/ver-proyecto?id=${id}`} />
+          <TitleTable tableName={`Activos ${data.proyecto.nombre}`} page={`/nuevo-activo?dataProyecto=${encodeURIComponent(JSON.stringify(data.proyecto))}`} button='+ Agregar Activo' />
+          {/* dataProyecto=${encodeURIComponent(JSON.stringify(data.proyecto)) 
+            proyectoId=${id}&nombre=${data.proyecto.nombre}*/}
         </div>
         <div>
           {activosData.data && activosData.data.activos && activosData.data.activos.length > 0 ? (

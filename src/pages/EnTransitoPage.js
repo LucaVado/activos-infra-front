@@ -13,8 +13,8 @@ const EnTransito = () =>{
   const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
   const pages = {
     delete: 'activos/delete-activo',
-    view: '/ver-activo-cctv',
-    edit: '/editar-activo-cctv'
+    view: '/ver-activo',
+    edit: '/editar-activo'
 }
   return (
     <div className="container-content">
