@@ -3,24 +3,35 @@ import "../../styles/content.css";
 import "../../styles/inputForms.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { showNotification } from "../../utils/notification";
 import API_BASE_URL from "../../config";
 
-const NuevoActivoCctv = () => {
+const NuevoActivo = () => {
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+
+    // buscarParams(searchParams);
+    const id = searchParams ? searchParams.get("proyectoId") : "";
+    const nombreProyecto = searchParams ? searchParams.get("nombre") : "";
+    const dataProyectoParam = searchParams ? searchParams.get("dataProyecto") : null;
+    const dataProyecto = dataProyectoParam!=null ? JSON.parse(decodeURIComponent(dataProyectoParam)) : [];
+    console.log(dataProyecto.nombre)
+
     const [nombre, setNombre] = useState("");
     const [numeroSerie, setNumeroSerie] = useState("");
     const [numeroActivo, setNumeroActivo] = useState("");
-    const [fechaEntrada, setFechaEntrada] = useState("");
-    const [fechaSalida, setFechaSalida] = useState("");
-    const [estatus, setEstatus] = useState("Entrada");
+    const [fechaEntrada, setFechaEntrada] = useState(dataProyecto ? dataProyecto.fechaEntrada : "");
+    const [fechaSalida, setFechaSalida] = useState(dataProyecto ? dataProyecto.fechaSalida : "");
+    const [estatus, setEstatus] = useState(dataProyecto ? dataProyecto.fechaEntrada : "Entrada");
     const [folio, setFolio] = useState("");
-    const [guia, setGuia] = useState("");
-    const [razon, setRazon] = useState("Incremento");
+    const [guia, setGuia] = useState(dataProyecto ? dataProyecto.guia : "");
+    const [razon, setRazon] = useState(dataProyecto ? dataProyecto.razon : "Incremento");
     const [codigo, setCodigo] = useState("");
     const [userId, setUserId] = useState(1);
     const [tipoActivoId, setTipoActivoId] = useState();
-    const [proyecto, setProyecto] = useState("");
-    const [proyectoId, setProyectoId] = useState();
+    const [proyecto, setProyecto] = useState(dataProyecto ? dataProyecto.nombre : "");
+    const [proyectoId, setProyectoId] = useState( dataProyecto ? dataProyecto.id : null);
     const [modelo, setModelo] = useState("");
 
     const handleFindProyecto = (nombreProyecto) => {
@@ -104,12 +115,12 @@ const NuevoActivoCctv = () => {
     return (
         <div className="container-content">
             <div className="title">
-                <h1>Nuevo Activo CCTV</h1>
+                <h1>Nuevo Activo</h1>
             </div>
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>
                     <NavLink to='/nuevo-modelo' className="button">
-                        <span><h4>+Agregar modelo</h4></span>
+                        <span><h4>+ Agregar modelo</h4></span>
                     </NavLink>
                 </div>
                 <form class="add-form" action="/" method="">
@@ -185,4 +196,13 @@ const NuevoActivoCctv = () => {
     );
 };
 
-export default NuevoActivoCctv;
+export default NuevoActivo;
+
+function buscarParams(searchParams){
+    const dataProyecto = searchParams ? searchParams.get("dataProyecto") : [];
+    
+
+    if(dataProyecto.length > 0){
+        console.log('proyecto: ', dataProyecto);
+    }
+} 

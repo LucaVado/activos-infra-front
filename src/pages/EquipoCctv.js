@@ -10,11 +10,11 @@ const EquipoCctv = () => {
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
+  const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon'];
   const pages = {
     delete: 'activos/delete-activo',
-    view: '/ver-activo-cctv',
-    edit: '/editar-activo-cctv'
+    view: '/ver-activo',
+    edit: '/editar-activo'
   }
   return (
     <div className="container-content">
@@ -23,7 +23,7 @@ const EquipoCctv = () => {
       </div>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName='Activos cctv' page='/nuevo-activo-cctv' button='+ Nuevo' />
+          <TitleTable tableName='Activos cctv' page='/nuevo-activo' button='+ Nuevo' />
         </div>
         <div>
           {data && data.activos && data.activos.length > 0 ? (

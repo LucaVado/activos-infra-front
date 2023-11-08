@@ -30,6 +30,9 @@ import VerUser from "./pages/user/VerUser";
 import NuevoUser from "./pages/user/NuevoUser";
 import EditarUser from "./pages/user/EditarUser";
 import NuevoModeloActivo from "./pages/modeloActivo/NuevoModelo";
+import NuevoActivo from "./pages/activo/NuevoActivo";
+import EditarActivo from "./pages/activo/EditarActivo";
+import VerActivo from "./pages/activo/VerActivo";
 
 const App = () =>{
   return (
@@ -52,12 +55,15 @@ const App = () =>{
               <Route path="/nuevo-proyecto" element={<NuevoProyecto/>} />
               <Route path="/ver-proyecto" element={<VerProyecto/>} />
               <Route path="/editar-proyecto" element={<EditarProyecto/>} />
-              <Route path="/ver-activo-cctv" element={<VerActivoCctv/>} />
-              <Route path="/nuevo-activo-cctv" element={<NuevoActivoCctv/>} />
+              <Route path="/nuevo-activo" element={<NuevoActivo/>} />
+              <Route path="/editar-activo" element={<EditarActivo/>} />
+               <Route path="/ver-activo" element={<VerActivo/>} />
+               <Route path="/ver-activo-cctv" element={<VerActivoCctv/>} />
+              {/*<Route path="/nuevo-activo-cctv" element={<NuevoActivoCctv/>} />
               <Route path="/editar-activo-cctv" element={<EditarActivoCctv/>} />
               <Route path="/ver-activo-alarma" element={<VerActivoAlarma/>} />
               <Route path="/nuevo-activo-alarma" element={<NuevoActivoAlarma/>} />
-              <Route path="/editar-activo-alarma" element={<EditarActivoAlarma/>} />
+              <Route path="/editar-activo-alarma" element={<EditarActivoAlarma/>} /> */}
               <Route path="/ver-sucursal" element={<VerSucursal/>} />
               <Route path="/nueva-sucursal" element={<NuevaSucursal/>} />
               <Route path="/editar-sucursal" element={<EditarSucursal/>} />

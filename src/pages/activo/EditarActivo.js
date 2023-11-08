@@ -1,12 +1,16 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import { useFetch } from "../../fetch/useFetch";
+import { useState } from "react";
+import { useEffect } from "react";
 import "../../styles/content.css";
 import "../../styles/inputForms.css";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import { showNotification } from "../../utils/notification";
+import { NavLink } from "react-router-dom";
 import API_BASE_URL from "../../config";
 
-const NuevoActivoCctv = () => {
+const EditarActivo = () => {
+
     const [nombre, setNombre] = useState("");
     const [numeroSerie, setNumeroSerie] = useState("");
     const [numeroActivo, setNumeroActivo] = useState("");
@@ -23,9 +27,33 @@ const NuevoActivoCctv = () => {
     const [proyectoId, setProyectoId] = useState();
     const [modelo, setModelo] = useState("");
 
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const id = searchParams.get("id");
+    const { data } = useFetch(`${API_BASE_URL}/activos/get-activo?id=${id}`, { method: 'POST' });
+
+    useEffect(() => {
+        console.log(data);
+        if (data && data.activo) {
+            setNombre(data.activo.nombre);
+            setNumeroSerie(data.activo.numeroSerie);
+            setNumeroActivo(data.activo.numeroActivo);
+            setFechaEntrada(data.activo.fechaEntrada.substring(0, 10));
+            setFechaSalida(data.activo.fechaEntrada.substring(0, 10));
+            setEstatus(data.activo.estatus);
+            setFolio(data.activo.folio);
+            setGuia(data.activo.guia);
+            setRazon(data.activo.razon);
+            setModelo(data.activo.modelo);
+            setProyectoId(data.activo.proyectoId);
+            setProyecto(data.activo.proyecto);
+            setCodigo(data.activo.codigo);
+        }
+    }, [data]);
+
     const handleFindProyecto = (nombreProyecto) => {
         console.log(nombreProyecto);
-    
+
         fetch(`${API_BASE_URL}/proyecto/get-proyectoByName?proyecto=${nombreProyecto}`)
             .then(response => response.json())
             .then(dataProyecto => {
@@ -33,7 +61,7 @@ const NuevoActivoCctv = () => {
                 if (dataProyecto && dataProyecto.proyecto) {
                     setProyecto(dataProyecto.proyecto.nombre || '');
                     setProyectoId(dataProyecto.proyecto.id || '');
-    
+
                     // Convertir fechas de ISO 8601 a formato de fecha legible
                     if (dataProyecto.proyecto.fechaEntrada) {
                         const fechaEntrada = new Date(dataProyecto.proyecto.fechaEntrada).toISOString().split('T')[0];
@@ -43,7 +71,7 @@ const NuevoActivoCctv = () => {
                         const fechaSalida = new Date(dataProyecto.proyecto.fechaSalida).toISOString().split('T')[0];
                         setFechaSalida(fechaSalida);
                     }
-    
+
                     setGuia(dataProyecto.proyecto.guia || '');
                     setEstatus(dataProyecto.proyecto.estatus);
                     setRazon(dataProyecto.proyecto.razon);
@@ -58,7 +86,7 @@ const NuevoActivoCctv = () => {
                 showNotification('Ha ocurrido un error', 'error');
             });
     };
-    
+
 
     const handleFindCode = (codigo) => {
         console.log(codigo);
@@ -80,36 +108,39 @@ const NuevoActivoCctv = () => {
     }
 
     const handlePost = () => {
-        const data = { content: { nombre, numeroSerie, numeroActivo, fechaEntrada, fechaSalida, estatus, folio, guia, razon, userId, tipoActivoId, proyectoId } };
-        console.log('nombre:', nombre);
-        console.log('fechaEntrada:', fechaEntrada);
-        console.log('fechaSalida:', fechaSalida);
-        console.log('userId:', userId);
-        console.log(data);
-        fetch(`${API_BASE_URL}/activos/post-activo`, {
+        const dataPost = { activo: { id: parseInt(data.activo.id), nombre, numeroSerie, numeroActivo, fechaEntrada, fechaSalida, estatus, folio, guia, razon, userId, tipoActivoId, proyectoId } };
+
+        fetch(`${API_BASE_URL}/activos/post-edit-activo?id=${id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(dataPost),
         })
             .then((response) => {
                 window.location.href = '/equipoCctv';
             })
             .catch((error) => {
-                console.error("Hubo un problema al crear el activo:", error);
-                showNotification('Ha ocurrido un error al crear el activo', 'error');
+                console.error("Hubo un problema al eliminar el registro:", error);
             });
     };
+
+    if (!data) {
+        return <p>Cargando...</p>;
+    }
+
+    if (!data.activo) {
+        return <p>Proyecto no encontrado</p>;
+    }
     return (
         <div className="container-content">
             <div className="title">
-                <h1>Nuevo Activo CCTV</h1>
+                <h1>Nuevo Activo</h1>
             </div>
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>
                     <NavLink to='/nuevo-modelo' className="button">
-                        <span><h4>+Agregar modelo</h4></span>
+                        <span><h4>+ Agregar modelo</h4></span>
                     </NavLink>
                 </div>
                 <form class="add-form" action="/" method="">
@@ -178,11 +209,11 @@ const NuevoActivoCctv = () => {
                     
                     <div class="form-control"></div>
 
-                    <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Crear</button></div>
+                    <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Editar</button></div>
                 </form>
             </div>
         </div>
     );
 };
 
-export default NuevoActivoCctv;
+export default EditarActivo;
