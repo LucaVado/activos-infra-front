@@ -1,10 +1,11 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import { ToastContainer } from "react-toastify";
 import Sidebar from './components/Sidebar';
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/login";
 import EquipoCctv from "./pages/EquipoCctv";
 import EquipoAlarma from "./pages/EquipoAlarma";
 import EnTransitoPage from "./pages/EnTransitoPage";
@@ -33,8 +34,15 @@ import NuevoModeloActivo from "./pages/modeloActivo/NuevoModelo";
 import NuevoActivo from "./pages/activo/NuevoActivo";
 import EditarActivo from "./pages/activo/EditarActivo";
 import VerActivo from "./pages/activo/VerActivo";
+import RevisaLlegada from "./pages/proyecto/RevisarLlegada";
 
 const App = () =>{
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Estado para verificar si el usuario ha iniciado sesión
+
+  // Si el usuario ha iniciado sesión, muestra el panel de control; de lo contrario, muestra el formulario de inicio de sesión
+  if (!isLoggedIn) {
+    return <Login setIsLoggedIn={setIsLoggedIn} />;
+  }
   return (
     <div>
       <ToastContainer />
@@ -71,6 +79,7 @@ const App = () =>{
               <Route path="/nuevo-user" element={<NuevoUser/>} />
               <Route path="/editar-user" element={<EditarUser/>} />
               <Route path="/nuevo-modelo" element={<NuevoModeloActivo/>} />
+              <Route path="/revisar-llegada" element={<RevisaLlegada/>} />
             </Routes>
           </Sidebar>        
       </BrowserRouter>

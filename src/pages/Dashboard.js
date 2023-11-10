@@ -1,17 +1,29 @@
 import React from "react";
 import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
+import DashData from "../components/DashData";
 import DataTable from "../components/DataTable.js";
 import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
 
 const Dashboard = () => {
 
-  const { data } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
-  console.log(data);
-  // console.log(data.proyecto);
+  // const [cantidadProyectosPorConfigurar, setCantidadProyectosPorConfigurar] = useState("...");
+  // const [cantidadEntransito, setCantidadEntransito] = useState("...");
+  // const [cantidadProyectosEnTransito, setCantidadProyectosEnTransito] = useState("...");
+  // const [cantidadEquipoCCTV, setCantidadEquipoCCTV] = useState("...");
+  // const [cantidadEquipoAlarma, setCantidadEquipoAlarma] = useState("...");
+  // const [cantidadTotalActivos, setCantidadTotalActivos] = useState("...");
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'folio', 'guia', 'razon', 'userId'];
+  const { data } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
+  const { dataProyectosPorConfigurar } = useFetch(`${API_BASE_URL}/proyecto/get-all`, {options: {method:'no-cors'}});
+  const { dataEntransito } = useFetch(`${API_BASE_URL}/activos/get-all-estatus?estatus=Entransito`);
+  const { dataProyectosEnTransito } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
+  const { dataEquipoCCTV } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=CCTV`);
+  const { dataEquipoAlarma } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=Alarma`);
+  const { dataTotalActivos } = useFetch(`${API_BASE_URL}/activos/get-all`);
+
+  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'guia', 'razon', 'destino'];
   const pages = {
     delete: "proyecto/delete-proyecto",
     view: '/ver-proyecto',
@@ -20,27 +32,49 @@ const Dashboard = () => {
 
   const dashData = [
     {
-      titulo: "Div 1",
-      cantidad: 21
+      titulo: "Proyectos por configurar",
+      cantidad: 0
     },
     {
-      titulo: "Div 2",
-      cantidad: 34
+      titulo: "Equipos en tránsito",
+      cantidad: 0
     },
     {
-      titulo: "Div 3",
-      cantidad: 45
-    }, {
-      titulo: "Div 4",
-      cantidad: 78
-    }, {
-      titulo: "Div 5",
-      cantidad: 9
-    }, {
-      titulo: "Div 6",
-      cantidad: 345
+      titulo: "Proyectos en tránsito",
+      cantidad: 0
+    }, 
+    {
+      titulo: "Equipo CCTV",
+      cantidad: 0
+    }, 
+    {
+      titulo: "Equipos de Alarma",
+      cantidad: 0
+    }, 
+    {
+      titulo: "Total de activos",
+      cantidad: 0
     }
   ];
+
+  if(dataProyectosPorConfigurar && dataProyectosPorConfigurar.proyecto && dataProyectosPorConfigurar.proyecto.length){
+    dashData[0].cantidad = data.proyecto.length;
+  }
+  if(dataEntransito && dataEntransito.activos && dataEntransito.activos.length){
+    dashData[1].cantidad = dataEntransito.proyecto.length;
+  }
+  if(dataProyectosEnTransito && dataProyectosEnTransito.proyecto && dataProyectosEnTransito.proyecto.length){
+    dashData[2].cantidad = dataProyectosEnTransito.proyecto.length;
+  }
+  if(dataEquipoCCTV && dataEquipoCCTV.activos && dataEquipoCCTV.activos.length){
+    dashData[3].cantidad = dataEquipoCCTV.activos.length;
+  }
+  if(dataEquipoAlarma && dataEquipoAlarma.activos && dataEquipoAlarma.activos.length){
+    dashData[4].cantidad = dataEntransito.activos.length;
+  }
+  if(dataTotalActivos && dataTotalActivos.activos && dataTotalActivos.activos.length){
+    dashData[5].cantidad = dataEntransito.activos.length;
+  }
 
   // if(data.proyecto){
   //   dashData[0].cantidad= data.proyecto.length;
@@ -52,14 +86,7 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
       </div>
       <div className="content">
-        <div className="dashboard">
-          {dashData.map((item, index) => (
-            <div key={index} className="dashboard-item">
-              <h1>{item.titulo}</h1>
-              <div className="conteo">{item.cantidad}</div>
-            </div>
-          ))}
-        </div>
+      <DashData dashData={dashData} />
         <div className="title-table">
           <TitleTable tableName='Proyectos recientes' page='/Proyectos' button='Ir a proyectos' />
         </div>

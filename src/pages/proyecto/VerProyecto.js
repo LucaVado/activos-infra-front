@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/content.css";
 import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
+import { NavLink } from "react-router-dom";
 import TitleTable from "../../components/TitleTable";
 import DataTable from "../../components/DataTable";
 import API_BASE_URL from "../../config";
@@ -13,7 +14,7 @@ const VerProyecto = () => {
   const id = searchParams.get("id");
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-proyecto?id=${id}`, { method: 'POST' });
   const activosData = useFetch(`${API_BASE_URL}/activos/get-all-proyecto?id=${id}`);
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
+  const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon'];
   const pages = {
     delete: 'activos/delete-activo',
     view: '/ver-activo-cctv',
@@ -21,11 +22,29 @@ const VerProyecto = () => {
   }
 
   if (!data) {
-    return <p>Cargando...</p>;
+    return (
+      <div className="container-content">
+        <div className="title">
+          <h1>Proyecto</h1>
+        </div>
+        <div className="content">
+          <p> Cargando</p>
+        </div>
+      </div>
+    );
   }
 
   if (!data.proyecto) {
-    return <p>Proyecto no encontrado</p>;
+    return (
+      <div className="container-content">
+        <div className="title">
+          <h1>Proyecto</h1>
+        </div>
+        <div className="content">
+          <p> Proyecto no encontrado</p>
+        </div>
+      </div>
+    );
   }
   return (
     <div className="container-content">
@@ -51,7 +70,14 @@ const VerProyecto = () => {
           </div>
           <div>
             <button class="button-proyect" type="button">Enviar a destino</button>
-            <button class="button-proyect" type="button">Revisar llegada</button>
+            {/* <button class="button-proyect" onClick={ } type="button">Revisar llegada</button> */}
+            <div class="button-proyect" >
+              <NavLink to='/revisar-llegada' className="button">
+                <span style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+                  <h4 style={{ color: "#FFF", fontFamily: 'Roboto Flex' }}>Revisar Llegada</h4>
+                </span>
+              </NavLink>
+            </div>
           </div>
         </div>
       </div>

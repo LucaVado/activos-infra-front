@@ -18,6 +18,7 @@ const NuevoActivo = () => {
     const dataProyecto = dataProyectoParam!=null ? JSON.parse(decodeURIComponent(dataProyectoParam)) : [];
     console.log(dataProyecto.nombre)
 
+    const [disabled, setDisable] = useState(dataProyectoParam!==null ? true : false);
     const [nombre, setNombre] = useState("");
     const [numeroSerie, setNumeroSerie] = useState("");
     const [numeroActivo, setNumeroActivo] = useState("");
@@ -134,8 +135,8 @@ const NuevoActivo = () => {
                     <div class="form-control">
                         <label for="proyecto">Proyecto</label>
                         <div>
-                            <input type="text" name="proyecto" id="proyecto" value={proyecto} onChange={(e) => setProyecto(e.target.value)} />
-                            <button class="btn-buscar-modelo" type="button" onClick={() => handleFindProyecto(proyecto)}>Buscar proyecto</button>
+                            <input type="text" name="proyecto" id="proyecto" value={proyecto} onChange={(e) => setProyecto(e.target.value)} disabled={disabled}/>
+                            <button class="btn-buscar-modelo" type="button" onClick={() => handleFindProyecto(proyecto)} disabled={disabled}>Buscar proyecto</button>
                         </div>
                     </div>
                     <div class="form-control">
@@ -152,11 +153,11 @@ const NuevoActivo = () => {
                     </div>                    
                     <div class="form-control">
                         <label for="fechaEntrada">Fecha de Entrada</label>
-                        <input type="date" name="fechaEntrada" id="fechaEntrada" value={fechaEntrada} onChange={(e) => setFechaEntrada(e.target.value)} />
+                        <input type="date" name="fechaEntrada" id="fechaEntrada" value={fechaEntrada} onChange={(e) => setFechaEntrada(e.target.value)} disabled={disabled}/>
                     </div>
                     <div class="form-control">
                         <label for="fechaSalida">Fecha de Salida</label>
-                        <input type="date" name="fechaSalida" id="fechaSalida" value={fechaSalida} onChange={(e) => setFechaSalida(e.target.value)} />
+                        <input type="date" name="fechaSalida" id="fechaSalida" value={fechaSalida} onChange={(e) => setFechaSalida(e.target.value)} disabled={disabled}/>
                     </div>
                     <div class="form-control">
                         <label for="estatus">Estatus</label>
@@ -184,7 +185,7 @@ const NuevoActivo = () => {
                     </div>
                     <div class="form-control">
                         <label for="guia">guia</label>
-                        <input type="text" name="guia" id="guia" value={guia} onChange={(e) => setGuia(e.target.value)} />
+                        <input type="text" name="guia" id="guia" value={guia} onChange={(e) => setGuia(e.target.value)} disabled={disabled}/>
                     </div>
                     
                     <div class="form-control"></div>
