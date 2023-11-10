@@ -1,27 +1,47 @@
 import React, { useState } from 'react';
 import '../styles/login.css';
+import API_BASE_URL from '../config';
 
 const Login = ({ setIsLoggedIn }) => {
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
-        setIsLoggedIn(true);
-        // Verifica las credenciales aquí
-        // if (correo === 'usuario' && password === 'contraseña') {
-        //     setIsLoggedIn(true); // Establece el estado de autenticación como verdadero
-        // } else {
-        //     alert('Nombre de usuario o contraseña incorrectos');
-        // }
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/users/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    correo: correo,
+                    password: password,
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Puedes realizar acciones adicionales si la autenticación fue exitosa
+                console.log('Usuario autenticado:', data.user);
+                setIsLoggedIn(true);
+            } else {
+                const errorData = await response.json();
+                console.error('Error en la autenticación:', errorData.message);
+                // Puedes mostrar un mensaje de error al usuario si lo deseas
+            }
+        } catch (error) {
+            console.error('Hubo un problema al realizar la autenticación:', error);
+        }
     };
 
     return (
         <div>
             <div className='login-container'>
-            <div className='logo-login'>
-                <img src="/images/icons/paquetexpress-logo-navbar.svg" alt="Logo" />
-            </div>
+                <div className='logo-login'>
+                    <img src="/images/icons/paquetexpress-logo-navbar.svg" alt="Logo" />
+                </div>
                 <form className='login-form' onSubmit={handleLogin}>
                     <div className='form-control-login'>
                         <label for="correo">Correo</label>
