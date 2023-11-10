@@ -1,10 +1,11 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import { ToastContainer } from "react-toastify";
 import Sidebar from './components/Sidebar';
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/login";
 import EquipoCctv from "./pages/EquipoCctv";
 import EquipoAlarma from "./pages/EquipoAlarma";
 import EnTransitoPage from "./pages/EnTransitoPage";
@@ -35,6 +36,12 @@ import EditarActivo from "./pages/activo/EditarActivo";
 import VerActivo from "./pages/activo/VerActivo";
 
 const App = () =>{
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para verificar si el usuario ha iniciado sesión
+
+  // Si el usuario ha iniciado sesión, muestra el panel de control; de lo contrario, muestra el formulario de inicio de sesión
+  if (!isLoggedIn) {
+    return <Login setIsLoggedIn={setIsLoggedIn} />;
+  }
   return (
     <div>
       <ToastContainer />
