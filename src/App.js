@@ -41,7 +41,13 @@ const App = () =>{
 
   // Si el usuario ha iniciado sesión, muestra el panel de control; de lo contrario, muestra el formulario de inicio de sesión
   if (!isLoggedIn) {
-    return <Login setIsLoggedIn={setIsLoggedIn} />;
+    return(
+      <div>
+        <ToastContainer />
+      <Login setIsLoggedIn={setIsLoggedIn} />
+      </div>
+      
+    ); 
   }
   return (
     <div>

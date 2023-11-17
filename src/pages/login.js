@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/login.css';
 import API_BASE_URL from '../config';
+import { showNotification } from '../utils/notification';
 
 const Login = ({ setIsLoggedIn }) => {
     const [correo, setCorreo] = useState('');
@@ -25,10 +26,12 @@ const Login = ({ setIsLoggedIn }) => {
                 const data = await response.json();
                 // Puedes realizar acciones adicionales si la autenticación fue exitosa
                 console.log('Usuario autenticado:', data.user);
+                showNotification(data.message, 'success');
                 setIsLoggedIn(true);
             } else {
                 const errorData = await response.json();
                 console.error('Error en la autenticación:', errorData.message);
+                showNotification(errorData.message, 'error');
                 // Puedes mostrar un mensaje de error al usuario si lo deseas
             }
         } catch (error) {
@@ -43,6 +46,9 @@ const Login = ({ setIsLoggedIn }) => {
                     <img src="/images/icons/paquetexpress-logo-navbar.svg" alt="Logo" />
                 </div>
                 <form className='login-form' onSubmit={handleLogin}>
+                <div className='form-control-login'>
+                        <label style={{fontSize:"20px", marginTop:"8px"}}>Inicia Sesión</label>
+                    </div>
                     <div className='form-control-login'>
                         <label for="correo">Correo</label>
                         <input
