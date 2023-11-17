@@ -14,11 +14,39 @@ const VerProyecto = () => {
   const id = searchParams.get("id");
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-proyecto?id=${id}`, { method: 'POST' });
   const activosData = useFetch(`${API_BASE_URL}/activos/get-all-proyecto?id=${id}`);
-  const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon'];
+  const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida','numeroSerie', 'estatus', 'razon'];
   const pages = {
     delete: 'activos/delete-activo',
     view: '/ver-activo-cctv',
     edit: '/editar-activo-cctv'
+  }
+
+  const handleGenerarReporte = () => {
+    fetch(`${API_BASE_URL}/activos/generar-reporte-activos-excel?id=${id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error al generar el reporte');
+        }
+        return response.blob();
+      })
+      .then(blob => {
+        // Crear un objeto URL para el blob
+        const url = window.URL.createObjectURL(blob);
+        
+        // Crear un enlace temporal y hacer clic en él para descargar el archivo
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `reporte_activos_${data.proyecto.nombre}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        // Liberar el objeto URL
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(error => {
+        console.error('Error al generar el reporte:', error.message);
+      });
   }
 
   if (!data) {
@@ -66,7 +94,7 @@ const VerProyecto = () => {
         </div>
         <div className="button-container">
           <div>
-            <button class="button-proyect" type="button">Generar Excel</button>
+            <button class="button-proyect" type="button" onClick={handleGenerarReporte}>Generar Excel</button>
           </div>
           <div>
             <button class="button-proyect" type="button">Enviar a destino</button>
