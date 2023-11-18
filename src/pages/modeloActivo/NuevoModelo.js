@@ -1,29 +1,37 @@
 import React from "react";
 import "../../styles/content.css";
 import "../../styles/inputForms.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useFetch } from "../../fetch/useFetch";
+import useBeforeUnload from "../../fetch/beforeUnload";
+import PageTitle from "../../components/PageTitle";
 import TitleTable from "../../components/TitleTable";
 import DataTable from "../../components/DataTable";
 import API_BASE_URL from "../../config";
 
 const NuevoModeloActivo = () => {
+    const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+
     const [nombre, setNombre] = useState("");
     const [tipo, setTipo] = useState("CCTV");
     const [codigo, setCodigo] = useState("");
     const [modelo, setModelo] = useState("");
     const [userId, setUserId] = useState(1);
 
-    const columns = ['id', 'nombre', 'tipo', 'modelo', 'codigo'];
-  const pages = {
-    delete: "proyecto/delete-tipo",
-    view: '/nuevo-modelo',
-    edit: '/nuevo-modelo'
-  }
+    const [formModified, setFormModified] = useState(false);
+    useBeforeUnload(formModified);
 
-    const { modelos } = useFetch(`${API_BASE_URL}/tipo-activo/get-all`);
-    console.log('modelo: ',modelos);
+    const columns = ['id', 'nombre', 'tipo', 'modelo', 'codigo'];
+    const pages = {
+        delete: "proyecto/delete-tipo",
+        view: '/nuevo-modelo',
+        edit: '/nuevo-modelo'
+    }
+
+    const modelosData = useFetch(`${API_BASE_URL}/tipo-activo/get-all`);
+    console.log('modelo: ', modelosData);
 
     const handlePost = () => {
         const data = { content: { nombre, tipo, codigo, modelo, userId } };
@@ -36,17 +44,24 @@ const NuevoModeloActivo = () => {
             body: JSON.stringify(data),
         })
             .then((response) => {
-                window.location.href = '/nuevo-activo';
+                if (response.ok) {
+                    setFormModified(false);
+                    window.location.href = '/nuevo-activo';
+                } else {
+                    console.error("Hubo un problema al crear el modelo", response);
+                }
             })
             .catch((error) => {
-                console.error("Hubo un problema al eliminar el registro:", error);
+                console.error("Hubo un problema al crear el modelo", error);
             });
     };
     return (
         <div className="container-content">
-            <div className="title">
+            {/* <div className="title">
                 <h1>Nuevo Modelo Activo</h1>
-            </div>
+            </div> */}
+            <PageTitle title="Nuevo Modelo" origin={origen} />
+
             <div className="content">
                 <form class="add-form" action="/" method="">
                     <div class="form-control">
@@ -75,12 +90,12 @@ const NuevoModeloActivo = () => {
                     <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Crear</button></div>
                 </form>
                 <div className="title-table">
-          <TitleTable tableName='Modelos' page='/nuevo-modelo' button='+ Nuevo' />
-        </div>
+                    <TitleTable tableName='Modelos' page='/nuevo-modelo' button='+ Nuevo' />
+                </div>
                 <div>
                     {
-                        modelos && modelos.tipos && modelos.tipos.length > 0 ? (
-                            <DataTable columns={columns} data={modelos.tipos} pages={pages} />
+                        modelosData.data && modelosData.data.tipos && modelosData.data.tipos.length > 0 ? (
+                            <DataTable columns={columns} data={modelosData.data.tipos} pages={pages} />
                         ) : (
                             <p>Cargando...</p>
                         )}

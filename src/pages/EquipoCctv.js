@@ -1,11 +1,16 @@
 import React from "react";
 import "../styles/content.css";
+import { Link, useLocation } from "react-router-dom";
 import { useFetch } from "../fetch/useFetch";
 import DataTable from "../components/DataTable";
 import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
+import PageTitle from "../components/PageTitle";
 
 const EquipoCctv = () => {
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+
   const { data } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=CCTV`);
   console.log(data);
   // console.log(data.proyecto);
@@ -18,9 +23,10 @@ const EquipoCctv = () => {
   }
   return (
     <div className="container-content">
-      <div className="title">
+      {/* <div className="title">
         <h1>Equipo CCTV</h1>
-      </div>
+      </div> */}
+      <PageTitle title= "Equipo CCTV" origin={origen}/>
       <div className="content">
         <div className="title-table">
           <TitleTable tableName='Activos cctv' page='/nuevo-activo' button='+ Nuevo' />
