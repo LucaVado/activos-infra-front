@@ -1,12 +1,16 @@
 import React from "react";
 import "../../styles/content.css";
 import "../../styles/inputForms.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { showNotification } from "../../utils/notification";
+import PageTitle from "../../components/PageTitle";
 import API_BASE_URL from "../../config";
 
 const NuevoActivoCctv = () => {
+    const location = useLocation();
+    const origen = location.state ? location.state.origen : "/";
+
     const [nombre, setNombre] = useState("");
     const [numeroSerie, setNumeroSerie] = useState("");
     const [numeroActivo, setNumeroActivo] = useState("");
@@ -103,9 +107,8 @@ const NuevoActivoCctv = () => {
     };
     return (
         <div className="container-content">
-            <div className="title">
-                <h1>Nuevo Activo CCTV</h1>
-            </div>
+            <PageTitle title= "Nuevo Activo CCTV" origin={origen}/>
+
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>
                     <NavLink to='/nuevo-modelo' className="button">

@@ -6,10 +6,13 @@ import { useEffect } from "react";
 import "../../styles/content.css";
 import "../../styles/inputForms.css";
 import { showNotification } from "../../utils/notification";
+import PageTitle from "../../components/PageTitle";
 import { NavLink } from "react-router-dom";
 import API_BASE_URL from "../../config";
 
 const EditarActivo = () => {
+    const origen = location.state ? location.state.origen : "/";
+
 
     const [nombre, setNombre] = useState("");
     const [numeroSerie, setNumeroSerie] = useState("");
@@ -134,9 +137,8 @@ const EditarActivo = () => {
     }
     return (
         <div className="container-content">
-            <div className="title">
-                <h1>Nuevo Activo</h1>
-            </div>
+            <PageTitle title= "Editar Activo" origin={origen}/>
+
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>
                     <NavLink to='/nuevo-modelo' className="button">

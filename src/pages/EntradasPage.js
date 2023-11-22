@@ -1,11 +1,16 @@
 import React from "react";
 import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
+import { useLocation } from "react-router-dom";
+import PageTitle from "../components/PageTitle";
 import DataTable from "../components/DataTable";
 import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
 
 const Entradas = () => {
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+
   const { data } = useFetch(`${API_BASE_URL}/activos/get-all-estatus?estatus=Entrada`);
   console.log(data);
   // console.log(data.proyecto);
@@ -25,9 +30,7 @@ const Entradas = () => {
   }
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Activos con entrada</h1>
-      </div>
+      <PageTitle title= "Activos con entrada" origin={origen}/>
       <div className="content">
         <div className="title-table">
           <TitleTable tableName='Activos en transito' page='/nuevo-activo-cctv' button='+ Nuevo' />
