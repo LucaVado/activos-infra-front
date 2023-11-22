@@ -2,12 +2,16 @@ import React from "react";
 import "../../styles/content.css";
 import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
+import PageTitle from "../../components/PageTitle";
 import API_BASE_URL from "../../config";
 
 const VerActivo = () =>{
   // const { id } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+
+  const origen = location.state ? location.state.origen : "/";
+
   const id = searchParams.get("id");
   const { data } = useFetch(`${API_BASE_URL}/activos/get-activo?id=${id}`, {method: 'POST'});
   // console.log(data.proyecto.nombre);
@@ -20,9 +24,9 @@ const VerActivo = () =>{
   }
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Activo {data.activo.nombre}</h1>
-      </div>
+      
+      <PageTitle title= {`Activo ${data.activo.nombre}`} origin={origen}/>
+
       <div className="content">
       <h1>{data.activo.id}</h1>
         <h1>nombre: {data.activo.nombre}</h1>

@@ -37,7 +37,7 @@ import VerActivo from "./pages/activo/VerActivo";
 import RevisaLlegada from "./pages/proyecto/RevisarLlegada";
 
 const App = () =>{
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Estado para verificar si el usuario ha iniciado sesión
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para verificar si el usuario ha iniciado sesión
 
   // Si el usuario ha iniciado sesión, muestra el panel de control; de lo contrario, muestra el formulario de inicio de sesión
   if (!isLoggedIn) {

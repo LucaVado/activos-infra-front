@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/content.css";
 import "../../styles/inputForms.css";
 import { NavLink } from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { showNotification } from "../../utils/notification";
@@ -10,6 +11,9 @@ import API_BASE_URL from "../../config";
 const NuevoActivo = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
+
+    const origen = location.state ? location.state.origen : "/";
+
 
     // buscarParams(searchParams);
     const id = searchParams ? searchParams.get("proyectoId") : "";
@@ -115,9 +119,7 @@ const NuevoActivo = () => {
     };
     return (
         <div className="container-content">
-            <div className="title">
-                <h1>Nuevo Activo</h1>
-            </div>
+            <PageTitle title= "Nuevo Activo" origin={origen}/>
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>
                     <NavLink to='/nuevo-modelo' className="button">

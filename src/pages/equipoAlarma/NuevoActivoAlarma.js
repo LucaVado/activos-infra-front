@@ -2,9 +2,14 @@ import React from "react";
 import "../../styles/content.css";
 import "../../styles/inputForms.css";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 import API_BASE_URL from "../../config";
 
 const NuevoActivoCctv = () =>{
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+
     const [nombre, setNombre] = useState("");
     const [numeroSerie, setNumeroSerie] = useState("");
     const [numeroActivo, setNumeroActivo] = useState("");
@@ -41,9 +46,9 @@ const NuevoActivoCctv = () =>{
     };
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Nuevo Activo Alarma</h1>
-      </div>
+      
+      <PageTitle title= 'Nuevo Activo Alarma' origin={origen}/>
+
       <div className="content">
       <form class="add-form" action="/" method="">
             <div class="form-control">

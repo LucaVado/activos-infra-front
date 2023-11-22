@@ -1,10 +1,12 @@
 import React from "react";
 import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
+import PageTitle from "../components/PageTitle.js";
 import DashData from "../components/DashData";
 import DataTable from "../components/DataTable.js";
 import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
+import { useLocation } from "react-router-dom";
 
 const Dashboard = () => {
 
@@ -14,14 +16,16 @@ const Dashboard = () => {
   // const [cantidadEquipoCCTV, setCantidadEquipoCCTV] = useState("...");
   // const [cantidadEquipoAlarma, setCantidadEquipoAlarma] = useState("...");
   // const [cantidadTotalActivos, setCantidadTotalActivos] = useState("...");
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
 
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
-  const { dataProyectosPorConfigurar } = useFetch(`${API_BASE_URL}/proyecto/get-all`, {options: {method:'no-cors'}});
-  const { dataEntransito } = useFetch(`${API_BASE_URL}/activos/get-all-estatus?estatus=Entransito`);
-  const { dataProyectosEnTransito } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
-  const { dataEquipoCCTV } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=CCTV`);
-  const { dataEquipoAlarma } = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=Alarma`);
-  const { dataTotalActivos } = useFetch(`${API_BASE_URL}/activos/get-all`);
+  const dataProyectosPorConfigurar = useFetch(`${API_BASE_URL}/proyecto/get-all`);
+  const dataEntransito  = useFetch(`${API_BASE_URL}/activos/get-all-estatus?estatus=Entransito`);
+  const dataProyectosEnTransito = useFetch(`${API_BASE_URL}/proyecto/get-all`);
+  const dataEquipoCCTV = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=CCTV`);
+  const dataEquipoAlarma = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=Alarma`);
+  const dataTotalActivos = useFetch(`${API_BASE_URL}/activos/get-all`);
 
   const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'guia', 'razon', 'destino'];
   const pages = {
@@ -56,24 +60,24 @@ const Dashboard = () => {
       cantidad: 0
     }
   ];
-
-  if(dataProyectosPorConfigurar && dataProyectosPorConfigurar.proyecto && dataProyectosPorConfigurar.proyecto.length){
-    dashData[0].cantidad = data.proyecto.length;
+  console.log(dataProyectosPorConfigurar.data);
+  if(dataProyectosPorConfigurar.data && dataProyectosPorConfigurar.data.proyecto && dataProyectosPorConfigurar.data.proyecto.length){
+    dashData[0].cantidad = dataProyectosPorConfigurar.data.proyecto.length;
   }
-  if(dataEntransito && dataEntransito.activos && dataEntransito.activos.length){
-    dashData[1].cantidad = dataEntransito.proyecto.length;
+  if(dataEntransito.data && dataEntransito.data.activos && dataEntransito.data.activos.length){
+    dashData[1].cantidad = dataEntransito.data.proyecto.length;
   }
-  if(dataProyectosEnTransito && dataProyectosEnTransito.proyecto && dataProyectosEnTransito.proyecto.length){
-    dashData[2].cantidad = dataProyectosEnTransito.proyecto.length;
+  if(dataProyectosEnTransito.data && dataProyectosEnTransito.data.proyecto && dataProyectosEnTransito.data.proyecto.length){
+    dashData[2].cantidad = dataProyectosEnTransito.data.proyecto.length;
   }
-  if(dataEquipoCCTV && dataEquipoCCTV.activos && dataEquipoCCTV.activos.length){
-    dashData[3].cantidad = dataEquipoCCTV.activos.length;
+  if(dataEquipoCCTV.data && dataEquipoCCTV.data.activos && dataEquipoCCTV.data.activos.length){
+    dashData[3].cantidad = dataEquipoCCTV.data.activos.length;
   }
-  if(dataEquipoAlarma && dataEquipoAlarma.activos && dataEquipoAlarma.activos.length){
-    dashData[4].cantidad = dataEntransito.activos.length;
+  if(dataEquipoAlarma.data && dataEquipoAlarma.data.activos && dataEquipoAlarma.data.activos.length){
+    dashData[4].cantidad = dataEquipoAlarma.data.activos.length;
   }
-  if(dataTotalActivos && dataTotalActivos.activos && dataTotalActivos.activos.length){
-    dashData[5].cantidad = dataEntransito.activos.length;
+  if(dataTotalActivos.data && dataTotalActivos.data.activos && dataTotalActivos.data.activos.length){
+    dashData[5].cantidad = dataTotalActivos.data.activos.length;
   }
 
   // if(data.proyecto){
@@ -82,9 +86,7 @@ const Dashboard = () => {
 
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Dashboard</h1>
-      </div>
+      <PageTitle title= "Dashboard" origin={origen}/>
       <div className="content">
       <DashData dashData={dashData} />
         <div className="title-table">
