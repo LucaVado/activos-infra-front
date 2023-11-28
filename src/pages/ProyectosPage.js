@@ -1,11 +1,15 @@
 import React from "react";
 import "../styles/content.css";
 import { useFetch } from "../fetch/useFetch";
+import { useLocation } from "react-router-dom";
+import PageTitle from "../components/PageTitle.js";
 import DataTable from "../components/DataTable.js";
 import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
 
 const Proyectos = () =>{
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
   console.log(data);
   // console.log(data.proyecto);
@@ -18,9 +22,8 @@ const Proyectos = () =>{
 }
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Proyectos</h1>
-      </div>
+        <PageTitle title= "Proyectos" origin={origen}/>
+
       <div className="content">
         <div className="title-table">
           <TitleTable tableName='Proyectos' page='/nuevo-proyecto' button='+ Nuevo'/>

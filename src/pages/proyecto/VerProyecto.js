@@ -3,6 +3,7 @@ import "../../styles/content.css";
 import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { NavLink } from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 import TitleTable from "../../components/TitleTable";
 import DataTable from "../../components/DataTable";
 import API_BASE_URL from "../../config";
@@ -10,6 +11,7 @@ import API_BASE_URL from "../../config";
 const VerProyecto = () => {
   // const { id } = useParams();
   const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-proyecto?id=${id}`, { method: 'POST' });
@@ -76,9 +78,9 @@ const VerProyecto = () => {
   }
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Proyecto {data.proyecto.nombre}</h1>
-      </div>
+    
+      <PageTitle title= {`Proyecto ${data.proyecto.nombre}`} origin={origen}/>
+
       <div className="content">
         <div className="title-table">
           <TitleTable tableName={`Activos ${data.proyecto.nombre}`} page={`/nuevo-activo?dataProyecto=${encodeURIComponent(JSON.stringify(data.proyecto))}`} button='+ Agregar Activo' />

@@ -35,22 +35,23 @@ import NuevoActivo from "./pages/activo/NuevoActivo";
 import EditarActivo from "./pages/activo/EditarActivo";
 import VerActivo from "./pages/activo/VerActivo";
 import RevisaLlegada from "./pages/proyecto/RevisarLlegada";
+import { AuthProvider, useAuth } from "./components/AuthContext";
 
 const App = () =>{
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para verificar si el usuario ha iniciado sesión
+  const { isLoggedIn, isAdmin } = useAuth();
 
-  // Si el usuario ha iniciado sesión, muestra el panel de control; de lo contrario, muestra el formulario de inicio de sesión
   if (!isLoggedIn) {
-    return(
+    return (
       <div>
         <ToastContainer />
-      <Login setIsLoggedIn={setIsLoggedIn} />
+        <BrowserRouter>
+            <Login />
+        </BrowserRouter>
       </div>
-      
-    ); 
+    );
   }
   return (
-    <div>
+      <div>
       <ToastContainer />
       <Navbar />
       <div>
@@ -65,7 +66,6 @@ const App = () =>{
               <Route path="/porRevisarLlegada" element={<PorRevisarLlegadaPage/>} />
               <Route path="/Proyectos" element={<ProyectosPage/>} />
               <Route path="/Sucursales" element={<SucursalesPage/>} />
-              <Route path="/users" element={<UsersPage/>} />
               <Route path="/nuevo-proyecto" element={<NuevoProyecto/>} />
               <Route path="/ver-proyecto" element={<VerProyecto/>} />
               <Route path="/editar-proyecto" element={<EditarProyecto/>} />
@@ -73,11 +73,6 @@ const App = () =>{
               <Route path="/editar-activo" element={<EditarActivo/>} />
                <Route path="/ver-activo" element={<VerActivo/>} />
                <Route path="/ver-activo-cctv" element={<VerActivoCctv/>} />
-              {/*<Route path="/nuevo-activo-cctv" element={<NuevoActivoCctv/>} />
-              <Route path="/editar-activo-cctv" element={<EditarActivoCctv/>} />
-              <Route path="/ver-activo-alarma" element={<VerActivoAlarma/>} />
-              <Route path="/nuevo-activo-alarma" element={<NuevoActivoAlarma/>} />
-              <Route path="/editar-activo-alarma" element={<EditarActivoAlarma/>} /> */}
               <Route path="/ver-sucursal" element={<VerSucursal/>} />
               <Route path="/nueva-sucursal" element={<NuevaSucursal/>} />
               <Route path="/editar-sucursal" element={<EditarSucursal/>} />
@@ -86,6 +81,11 @@ const App = () =>{
               <Route path="/editar-user" element={<EditarUser/>} />
               <Route path="/nuevo-modelo" element={<NuevoModeloActivo/>} />
               <Route path="/revisar-llegada" element={<RevisaLlegada/>} />
+              <Route path="/login" element={<Login/>} />
+
+              if(isAdmin){
+                <Route path="/users" element={<UsersPage/>} />
+              }
             </Routes>
           </Sidebar>        
       </BrowserRouter>
