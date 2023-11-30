@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import API_BASE_URL from '../config';
 
 const AuthContext = createContext();
 
@@ -9,13 +10,45 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const token = Cookies.get('token');
-
-        if (token) {
+        const fetchData = async () => {
+          const token = Cookies.get('token');
+      
+          if (token) {
             // Si hay un token en las cookies, considera al usuario como autenticado
             setIsLoggedIn(true);
-        }
-    }, []);
+            console.log('entro al if token');
+            try {
+              // Realiza una solicitud al nuevo endpoint para obtener el token decodificado
+              const response = await fetch(`${API_BASE_URL}/users/get-token`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token }),
+              });
+            console.log('entro al try');
+
+      
+              if (response.ok) {
+                const decodedToken = await response.json();
+                setIsAdmin(decodedToken.decoded.user.tipoUsuario == 'Administrador' ? true: false);
+                setUser(decodedToken.decoded.user);
+            console.log('token', decodedToken);
+
+            console.log('entro al if response', isAdmin);
+            console.log(user);
+        } else {
+                console.error('Error decoding token:', response.statusText);
+              }
+            } catch (error) {
+              console.error('Error:', error);
+            }
+          }
+        };
+      
+        fetchData(); // Llama a la función asincrónica inmediatamente
+      
+      }, []);
 
     const login = (token, isAdmin, userData) => {
         setIsLoggedIn(true);

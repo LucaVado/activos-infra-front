@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/content.css';
 
-const PageTitle = ({ title, origin }) => {
+const PageTitle = ({ title, origen }) => {
   return (
     <div className="page-title-container">
       <div className="back-button-container">
-        <Link to={origin} className="back-button">
+        <Link to={origen} className="back-button">
           <span><img src="/images/icons/icono-regresar.svg" alt="regresar"></img></span>
         </Link>
       </div>

@@ -82,7 +82,7 @@ const Login = (/* { setIsLoggedIn } */) => {
                 <div className='logo-login'>
                     <img src="/images/icons/paquetexpress-logo-navbar.svg" alt="Logo" />
                 </div>
-                <form className='login-form' onSubmit={handleLogin}>
+                <form className='login-form'  onSubmit={handleLogin}>
                 <div className='form-control-login'>
                         <label style={{fontSize:"20px", marginTop:"8px"}}>Inicia Sesión</label>
                     </div>

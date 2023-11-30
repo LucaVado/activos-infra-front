@@ -78,6 +78,7 @@ main{
 .logout-button{
   border: none;
   cursor: pointer;
+  height: 4rem;
 }
 
 .logout-img{

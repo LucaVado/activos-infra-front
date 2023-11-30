@@ -7,6 +7,7 @@ import DataTable from "../components/DataTable.js";
 import TitleTable from "../components/TitleTable";
 import API_BASE_URL from "../config";
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../components/AuthContext.js";
 
 const Dashboard = () => {
 
@@ -16,8 +17,13 @@ const Dashboard = () => {
   // const [cantidadEquipoCCTV, setCantidadEquipoCCTV] = useState("...");
   // const [cantidadEquipoAlarma, setCantidadEquipoAlarma] = useState("...");
   // const [cantidadTotalActivos, setCantidadTotalActivos] = useState("...");
+  var {user} = useAuth();
   const location = useLocation();
   const origen = location.state ? location.state.origen : "/";
+  var nombreBienvenida = "";
+
+  console.log(location);
+  console.log(user);
 
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
   const dataProyectosPorConfigurar = useFetch(`${API_BASE_URL}/proyecto/get-all`);
@@ -79,14 +85,13 @@ const Dashboard = () => {
   if(dataTotalActivos.data && dataTotalActivos.data.activos && dataTotalActivos.data.activos.length){
     dashData[5].cantidad = dataTotalActivos.data.activos.length;
   }
-
-  // if(data.proyecto){
-  //   dashData[0].cantidad= data.proyecto.length;
-  // }
+  if(user && user.nombre){
+    nombreBienvenida = user.nombre;
+  }
 
   return (
     <div className="container-content">
-      <PageTitle title= "Dashboard" origin={origen}/>
+      <PageTitle title= {`Bienvenido ${nombreBienvenida}`} origen={origen}/>
       <div className="content">
       <DashData dashData={dashData} />
         <div className="title-table">

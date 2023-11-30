@@ -10,7 +10,7 @@ const Navbar = () => {
             <div className="logo-navbar"><img src="/images/icons/paquetexpress-logo-navbar.svg"></img></div>
             <div className="logout-navbar">
                 <button className="logout-button" onClick={logout}>
-                    <img className="logout-img" src="/images/icons/icono-logout.svg" title="Cerrar Sesión" alt="View" />
+                    <img className="logout-img" src="/images/icons/icono-logout2.svg" title="Cerrar Sesión" alt="View" />
                 </button>
             </div>
         </div>

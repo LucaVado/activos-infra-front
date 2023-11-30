@@ -111,6 +111,14 @@
     cursor: pointer;
   }
 
+  .hContainer,.VerActivolabel{
+    border-left: 4px solid #002A52;
+    padding-left: 5px;
+}
+ .hContainer{
+  color:#000000;
+ }
+
   @media (max-width: 768px) {
     .container-content {
       flex-direction: column; /* Cambia a apilado en pantallas pequeñas */
