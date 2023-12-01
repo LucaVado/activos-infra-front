@@ -74,7 +74,7 @@ const EditarActivoCctv = () => {
   return (
     <div className="container-content">
       
-      <PageTitle title= {`Editar ${nombre}`} origin={origen}/>
+      <PageTitle title= {`Editar ${nombre}`} origen={origen}/>
 
       <div className="content">
         <form class="add-form" action="/" method="">

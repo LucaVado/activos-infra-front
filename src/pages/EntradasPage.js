@@ -15,31 +15,41 @@ const Entradas = () => {
   console.log(data);
   // console.log(data.proyecto);
 
-  const columns = ['id', 'nombre', 'fechaEntrada', 'fechaSalida', 'estatus', 'razon', 'tipo', 'user'];
+  const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida', 'guia', 'estatus', 'razon'];
   const pages = {
     delete: 'activos/delete-activo',
     view: '/ver-activo',
     edit: '/editar-activo'
   }
   if (!data) {
-    return <p>Cargando...</p>;
+    return(
+      <div className="container-content">
+        <PageTitle title= "Activos con entrada" origen={origen}/>
+        <p className="loading-label">Cargando...</p>;
+      </div>
+    ); 
   }
 
   if (!data.activos) {
-    return <p>No hay activos con entrada</p>;
+    return(
+      <div className="container-content">
+        <PageTitle title= "Activos con entrada" origen={origen}/>
+        <p className="loading-label">Agrega un activo!</p>;
+      </div>
+    ); 
   }
   return (
     <div className="container-content">
-      <PageTitle title= "Activos con entrada" origin={origen}/>
+      <PageTitle title= "Activos con entrada" origen={origen}/>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName='Activos en transito' page='/nuevo-activo-cctv' button='+ Nuevo' />
+          <TitleTable tableName='Activos en transito' page='/nuevo-activo' button='+ Nuevo' />
         </div>
         <div>
           {data && data.activos && data.activos.length > 0 ? (
             <DataTable columns={columns} data={data.activos} pages={pages} />
           ) : (
-            <p>Cargando...</p>
+            <p className="loading-label">Cargando...</p>
           )}
         </div>
       </div>

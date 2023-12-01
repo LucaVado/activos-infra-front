@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
+import PageTitle from "../../components/PageTitle";
 import "../../styles/inputForms.css";
 import "../../styles/content.css";
 import API_BASE_URL from "../../config";
@@ -24,6 +25,8 @@ const EditarSucursal = () => {
   ];
 
   const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   const { data } = useFetch(`${API_BASE_URL}/sucursal/get-sucursal?id=${id}`, { method: 'POST' });
@@ -58,17 +61,19 @@ const EditarSucursal = () => {
   };
 
   if (!data) {
-    return <p>Cargando...</p>;
+    return(
+      <div className="container-content">
+        <PageTitle title= "Editar sucursal" origen={origen}/>
+        <div className="content">
+        <p className="loading-label">Cargando...</p>
+        </div>
+      </div>
+    );
   }
 
-  if (!data.sucursal) {
-    return <p>Proyecto no encontrado</p>;
-  }
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Nueva Sucursal</h1>
-      </div>
+      <PageTitle title= 'Editar sucursal' origen={origen}/>
       <div className="content">
         <form class="add-form" action="/" method="">
           <div class="form-control">

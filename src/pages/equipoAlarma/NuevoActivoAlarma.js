@@ -47,7 +47,7 @@ const NuevoActivoCctv = () =>{
   return (
     <div className="container-content">
       
-      <PageTitle title= 'Nuevo Activo Alarma' origin={origen}/>
+      <PageTitle title= 'Nuevo Activo Alarma' origen={origen}/>
 
       <div className="content">
       <form class="add-form" action="/" method="">

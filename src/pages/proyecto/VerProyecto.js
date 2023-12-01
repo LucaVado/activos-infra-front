@@ -3,6 +3,7 @@ import "../../styles/content.css";
 import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { NavLink } from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 import TitleTable from "../../components/TitleTable";
 import DataTable from "../../components/DataTable";
 import API_BASE_URL from "../../config";
@@ -10,15 +11,18 @@ import API_BASE_URL from "../../config";
 const VerProyecto = () => {
   // const { id } = useParams();
   const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
+
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-proyecto?id=${id}`, { method: 'POST' });
   const activosData = useFetch(`${API_BASE_URL}/activos/get-all-proyecto?id=${id}`);
   const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida','numeroSerie', 'estatus', 'razon'];
   const pages = {
     delete: 'activos/delete-activo',
-    view: '/ver-activo-cctv',
-    edit: '/editar-activo-cctv'
+    view: '/ver-activo',
+    edit: '/editar-activo'
   }
 
   const handleGenerarReporte = () => {
@@ -52,11 +56,9 @@ const VerProyecto = () => {
   if (!data) {
     return (
       <div className="container-content">
-        <div className="title">
-          <h1>Proyecto</h1>
-        </div>
+        <PageTitle title= {`Proyecto`} origen={origen}/>
         <div className="content">
-          <p> Cargando</p>
+        <p className="loading-label">Cargando...</p>
         </div>
       </div>
     );
@@ -65,20 +67,19 @@ const VerProyecto = () => {
   if (!data.proyecto) {
     return (
       <div className="container-content">
-        <div className="title">
-          <h1>Proyecto</h1>
-        </div>
+        <PageTitle title= {`Proyecto `} origen={origen}/>
         <div className="content">
-          <p> Proyecto no encontrado</p>
+        <p className="loading-label">Proyecto no encontrado!</p>
         </div>
       </div>
     );
   }
+  // if(data) const nombreProyecto = data.proyecto.nombre;
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Proyecto {data.proyecto.nombre}</h1>
-      </div>
+    
+      <PageTitle title= {`Proyecto ${data.proyecto.nombre}`} origen={origen}/>
+
       <div className="content">
         <div className="title-table">
           <TitleTable tableName={`Activos ${data.proyecto.nombre}`} page={`/nuevo-activo?dataProyecto=${encodeURIComponent(JSON.stringify(data.proyecto))}`} button='+ Agregar Activo' />
@@ -89,7 +90,7 @@ const VerProyecto = () => {
           {activosData.data && activosData.data.activos && activosData.data.activos.length > 0 ? (
             <DataTable columns={columns} data={activosData.data.activos} pages={pages} />
           ) : (
-            <p>Cargando...</p>
+            <p className="loading-label">Agrega un activo al proyecto!</p>
           )}
         </div>
         <div className="button-container">
@@ -97,7 +98,7 @@ const VerProyecto = () => {
             <button class="button-proyect" type="button" onClick={handleGenerarReporte}>Generar Excel</button>
           </div>
           <div>
-            <button class="button-proyect" type="button">Enviar a destino</button>
+            {/* <button class="button-proyect" type="button">Enviar a destino</button> */}
             {/* <button class="button-proyect" onClick={ } type="button">Revisar llegada</button> */}
             <div class="button-proyect" >
               <NavLink to='/revisar-llegada' className="button">

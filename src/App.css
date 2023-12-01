@@ -58,6 +58,13 @@ main{
   background: #3D9CFF;
   color: #FFFFFF;
 }
+
+.loading-label{
+  font-size: 25px;
+  font-weight: bold;
+  color: #002A52;
+}
+
 .icon, .link_text{
   font-size: 20px;
 }
@@ -69,9 +76,20 @@ main{
   background-color: #002A52;
   color:#FFF;
   padding: 0 1.5rem;
+  padding-right: 0;
   display: flex;
   align-items: center;
   position: relative;
+}
+
+.logout-button{
+  border: none;
+  cursor: pointer;
+  height: 4rem;
+}
+
+.logout-img{
+  height: 4rem;
 }
 
 .logo-navbar{

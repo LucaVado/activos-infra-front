@@ -4,6 +4,7 @@ import { useFetch } from "../../fetch/useFetch";
 import { showNotification } from "../../utils/notification";
 import { useState } from "react";
 import { useEffect } from "react";
+import PageTitle from "../../components/PageTitle";
 import API_BASE_URL from "../../config";
 import "../../styles/inputForms.css";
 import "../../styles/content.css";
@@ -20,6 +21,8 @@ const EditarProyecto = () => {
   const [userId, setUserId] = useState(1);
 
   const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+  
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-proyecto?id=${id}`, { method: 'POST' });
@@ -72,17 +75,29 @@ const EditarProyecto = () => {
   };
 
   if (!data) {
-    return <p>Cargando...</p>;
+    return(
+      <div className="container-content">
+        <PageTitle title= "Editar proyecto" origen={origen}/>
+        <div className="content">
+        <p className="loading-label">Cargando...</p>
+        </div>
+      </div>
+    );
   }
 
   if (!data.proyecto) {
-    return <p>Proyecto no encontrado</p>;
+    return(
+      <div className="container-content">
+        <PageTitle title= "Editar proyecto" origen={origen}/>
+        <div className="content">
+        <p className="loading-label">Proyecto no encontrado</p>
+        </div>
+      </div>
+    );
   }
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Editar Proyecto</h1>
-      </div>
+      <PageTitle title= "Editar Proyecto" origen={origen}/>
       <div className="content">
         <form class="add-form" action="/" method="">
           <div class="form-control">

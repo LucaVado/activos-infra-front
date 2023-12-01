@@ -2,6 +2,8 @@ import React from "react";
 import "../../styles/inputForms.css";
 import "../../styles/content.css";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 import API_BASE_URL from "../../config";
 
 const NuevaSucursal = () => {
@@ -11,6 +13,9 @@ const NuevaSucursal = () => {
   const [longitud, setLongitud] = useState(0);
   const [estado, setEstado] = useState("Sinaloa");
   const [userId, setUserId] = useState(1);
+
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
 
   const estadosMexicanos = [
     "Aguascalientes", "Baja California", "Baja California Sur", "Campeche",
@@ -38,9 +43,7 @@ const NuevaSucursal = () => {
   };
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Nueva Sucursal</h1>
-      </div>
+      <PageTitle title= 'Nueva sucursal' origen={origen}/>
       <div className="content">
         <form class="add-form" action="/" method="">
           <div class="form-control">

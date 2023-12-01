@@ -11,8 +11,6 @@ import { NavLink } from "react-router-dom";
 import API_BASE_URL from "../../config";
 
 const EditarActivo = () => {
-    const origen = location.state ? location.state.origen : "/";
-
 
     const [nombre, setNombre] = useState("");
     const [numeroSerie, setNumeroSerie] = useState("");
@@ -31,6 +29,8 @@ const EditarActivo = () => {
     const [modelo, setModelo] = useState("");
 
     const location = useLocation();
+    const origen = location.state ? location.state.origen : "/";
+    
     const searchParams = new URLSearchParams(location.search);
     const id = searchParams.get("id");
     const { data } = useFetch(`${API_BASE_URL}/activos/get-activo?id=${id}`, { method: 'POST' });
@@ -137,7 +137,7 @@ const EditarActivo = () => {
     }
     return (
         <div className="container-content">
-            <PageTitle title= "Editar Activo" origin={origen}/>
+            <PageTitle title= "Editar Activo" origen={origen}/>
 
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>
