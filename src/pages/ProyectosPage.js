@@ -20,9 +20,30 @@ const Proyectos = () =>{
     view: '/ver-proyecto',
     edit: '/editar-proyecto'
 }
+if (!data) {
+  return(
+    <div className="container-content">
+      <PageTitle title= "Proyectos" origen={origen}/>
+      <div className="content">
+      <p className="loading-label">Cargando...</p>
+      </div>
+    </div>
+  ); 
+}
+
+if (data.proyecto.length === 0) {
+  return(
+    <div className="container-content">
+      <PageTitle title= "Proyectos" origen={origen}/>
+      <div className="content">
+      <p className="loading-label">Agrega un proyecto!</p>
+      </div>
+    </div>
+  ); 
+}
   return (
     <div className="container-content">
-        <PageTitle title= "Proyectos" origin={origen}/>
+        <PageTitle title= "Proyectos" origen={origen}/>
 
       <div className="content">
         <div className="title-table">
@@ -32,7 +53,7 @@ const Proyectos = () =>{
         {data && data.proyecto && data.proyecto.length > 0 ? (
           <DataTable columns={columns} data={data.proyecto} pages={pages}/>
         ) : (
-          <p>Cargando...</p>
+          <p className="loading-label">Cargando...</p>
         )}
         </div>
         

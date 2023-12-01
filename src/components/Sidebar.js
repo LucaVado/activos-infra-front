@@ -6,7 +6,7 @@ import { useAuth } from "./AuthContext";
 const Sidebar = ({ children }) => {
 
     const { isAdmin } = useAuth();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
         {

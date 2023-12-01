@@ -1,12 +1,17 @@
 import React from "react";
 import "../../styles/inputForms.css";
 import "../../styles/content.css";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { showNotification } from "../../utils/notification";
+import PageTitle from "../../components/PageTitle";
 import API_BASE_URL from "../../config";
 
 const RevisaLlegada = () => {
     const [numeroSerie, setNumeroSerie] = useState("");
+
+    const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
 
     const handleReceived = () => {
         const data = { content: { numeroSerie } };
@@ -36,9 +41,7 @@ const RevisaLlegada = () => {
     };
     return (
         <div className="container-content">
-            <div className="title">
-                <h1>Revisarr llegada</h1>
-            </div>
+            <PageTitle title= "Revisar Llegada" origen={origen}/>
             <div className="content">
                 <form class="add-form" action="/" method="">
                     <div class="form-control">

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
 import { useEffect } from "react";
+import PageTitle from "../../components/PageTitle";
 import "../../styles/inputForms.css";
 import "../../styles/content.css";
 import API_BASE_URL from "../../config";
@@ -32,6 +33,8 @@ const EditarUser = () => {
   }, []);
 
   const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
+
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   const { data } = useFetch(`${API_BASE_URL}/users/get-user?id=${id}`, { method: 'POST' });
@@ -78,9 +81,7 @@ const EditarUser = () => {
   }
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Editar Usuario</h1>
-      </div>
+      <PageTitle title= "Editar usuario" origen={origen}/>
       <div className="content">
         <form class="add-form" action="/" method="">
           <div class="form-control">

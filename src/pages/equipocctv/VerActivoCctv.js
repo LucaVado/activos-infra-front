@@ -23,7 +23,7 @@ const VerActivoCctv = () =>{
   }
   return (
     <div className="container-content">
-      <PageTitle title= {`Editar ${data.activo.nombre}`} origin={origen}/>
+      <PageTitle title= {`Editar ${data.activo.nombre}`} origen={origen}/>
 
       <div className="content">
       <h1>{data.activo.id}</h1>

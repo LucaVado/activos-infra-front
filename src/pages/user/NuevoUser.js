@@ -4,7 +4,9 @@ import "../../styles/content.css";
 import { useState } from "react";
 import API_BASE_URL from "../../config";
 import { useFetch } from "../../fetch/useFetch";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import PageTitle from "../../components/PageTitle";
 import { showNotification } from "../../utils/notification";
 
 const NuevoUser = () => {
@@ -17,7 +19,10 @@ const NuevoUser = () => {
   const [tipoUsuario, setTipoUsuario] = useState("Usuario");
   const [sucursal, setSucursal] = useState("");
   const [departamento, setDepartamento] = useState("");
-  const [departamentos, setDepartamentos] = useState([{departamento: 'Selecciona un departamento'}]);
+  const [departamentos, setDepartamentos] = useState([{ departamento: 'Selecciona un departamento' }]);
+
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/departamento/get-all`)
@@ -30,6 +35,29 @@ const NuevoUser = () => {
       });
   }, []);
 
+  const generarPass = () => {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?/{}';
+    let password = '';
+
+    // Agregar al menos una mayúscula, una minúscula y un símbolo especial en posiciones aleatorias
+    const posMayuscula = Math.floor(Math.random() * 12);
+    const posMinuscula = Math.floor(Math.random() * 12) + 12;
+    const posSimbolo = Math.floor(Math.random() * 12) + 24;
+
+    for (let i = 0; i < 12; i++) {
+      if (i === posMayuscula) {
+        password += caracteres[Math.floor(Math.random() * 26)];
+      } else if (i === posMinuscula) {
+        password += caracteres[Math.floor(Math.random() * 26) + 26];
+      } else if (i === posSimbolo) {
+        password += caracteres[Math.floor(Math.random() * (caracteres.length - 52)) + 52];
+      } else {
+        password += caracteres[Math.floor(Math.random() * caracteres.length)];
+      }
+    }
+    setPassword(password);
+    // return password;
+  }
   const handlePost = () => {
     const data = { content: { nombre, apellidoPaterno, apellidoMaterno, numeroEmpleado, correo, password, tipoUsuario, sucursal, departamento } };
     // console.log('nombre:', nombre);
@@ -66,9 +94,7 @@ const NuevoUser = () => {
   };
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Nuevo Usuario</h1>
-      </div>
+      <PageTitle title= "Nuevo usuario" origen={origen}/>
       <div className="content">
         <form class="add-form" action="/" method="">
           <div class="form-control">
@@ -97,7 +123,7 @@ const NuevoUser = () => {
               {console.log('departamentos: ', departamentos)}
               {<option value='Selecciona un departamento' selected>
                 Selecciona un departamento
-                  </option>}
+              </option>}
               {Array.isArray(departamentos.departamento) &&
                 departamentos.departamento.map((depa, index) => (
                   <option key={index} value={depa.nombre}>
@@ -112,7 +138,10 @@ const NuevoUser = () => {
           </div>
           <div class="form-control">
             <label for="password">password</label>
-            <input type="text" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div style={{ display: 'flex' }}>
+              <input type="text" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <div style={{ marginTop: '5px' }}><button class="btn-buscar-modelo" type="button" onClick={generarPass}>Generar contraseña</button></div>
+            </div>
           </div>
           <div class="form-control">
             <label for="tipoUsuario">Tipo</label>

@@ -4,13 +4,13 @@
   min-width: 600px;
   padding-top: 10px;
   margin: auto;
+  max-height: 400px;
 }
 
 .data-table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #e0e0e0;
-  
 }
 .header-cell, .table-cell {
   text-align: center;

@@ -7,13 +7,14 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { showNotification } from "../../utils/notification";
 import API_BASE_URL from "../../config";
+import swal from "sweetalert";
 
 const NuevoActivo = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
 
     const origen = location.state ? location.state.origen : "/";
-
+    console.log(origen);
 
     // buscarParams(searchParams);
     const id = searchParams ? searchParams.get("proyectoId") : "";
@@ -38,6 +39,15 @@ const NuevoActivo = () => {
     const [proyecto, setProyecto] = useState(dataProyecto ? dataProyecto.nombre : "");
     const [proyectoId, setProyectoId] = useState( dataProyecto ? dataProyecto.id : null);
     const [modelo, setModelo] = useState("");
+
+    const cleanInputs = () =>{
+        setNombre("");
+        setNumeroSerie("");
+        setNumeroActivo("");
+        setCodigo("");
+        setTipoActivoId();
+        setModelo("");
+    }
 
     const handleFindProyecto = (nombreProyecto) => {
         console.log(nombreProyecto);
@@ -110,7 +120,14 @@ const NuevoActivo = () => {
             body: JSON.stringify(data),
         })
             .then((response) => {
-                window.location.href = '/equipoCctv';
+                // window.location.href = '/equipoCctv';
+                swal({
+                    title: "Activo agregado!",
+                    icon: 'success',
+                    timer: 800
+                }).then(
+                    cleanInputs()
+                );
             })
             .catch((error) => {
                 console.error("Hubo un problema al crear el activo:", error);
@@ -119,7 +136,7 @@ const NuevoActivo = () => {
     };
     return (
         <div className="container-content">
-            <PageTitle title= "Nuevo Activo" origin={origen}/>
+            <PageTitle title= "Nuevo Activo" origen={origen}/>
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>
                     <NavLink to='/nuevo-modelo' className="button">

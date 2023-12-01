@@ -22,7 +22,7 @@ const VerActivoAlarma = () => {
     }
     return (
         <div className="container-content">
-            <PageTitle title= {`Activo ${data.activo.nombre}`} origin={origen}/>
+            <PageTitle title= {`Activo ${data.activo.nombre}`} origen={origen}/>
             
             <div className="content">
                 <h1>{data.activo.id}</h1>

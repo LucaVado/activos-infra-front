@@ -107,7 +107,7 @@ const NuevoActivoCctv = () => {
     };
     return (
         <div className="container-content">
-            <PageTitle title= "Nuevo Activo CCTV" origin={origen}/>
+            <PageTitle title= "Nuevo Activo CCTV" origen={origen}/>
 
             <div className="content">
                 <div className="new-link" style={{ paddingLeft: '22px' }}>

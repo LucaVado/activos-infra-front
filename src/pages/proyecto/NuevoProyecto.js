@@ -2,6 +2,8 @@ import React from "react";
 import "../../styles/inputForms.css";
 import "../../styles/content.css";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 import { showNotification } from "../../utils/notification";
 import API_BASE_URL from "../../config";
 
@@ -14,6 +16,9 @@ const NuevoProyecto = () => {
   const [razon, setRazon] = useState("Incremento");
   const [sucursal, setSucursal] = useState("");
   const [userId, setUserId] = useState(1);
+
+  const location = useLocation();
+  const origen = location.state ? location.state.origen : "/";
 
   const handlePost = () => {
     const data = { content: { nombre, fechaEntrada, fechaSalida, userId, sucursal, estatus, guia, razon } };
@@ -47,9 +52,7 @@ const NuevoProyecto = () => {
   };
   return (
     <div className="container-content">
-      <div className="title">
-        <h1>Nuevo Proyecto</h1>
-      </div>
+      <PageTitle title= "Nuevo proyecto" origen={origen}/>
       <div className="content">
         <form class="add-form" action="/" method="">
           <div class="form-control">

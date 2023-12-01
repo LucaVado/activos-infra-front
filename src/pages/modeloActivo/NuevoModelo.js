@@ -25,7 +25,7 @@ const NuevoModeloActivo = () => {
 
     const columns = ['id', 'nombre', 'tipo', 'modelo', 'codigo'];
     const pages = {
-        delete: "proyecto/delete-tipo",
+        delete: "tipo-activo/delete-tipo",
         view: '/nuevo-modelo',
         edit: '/nuevo-modelo'
     }
@@ -60,7 +60,7 @@ const NuevoModeloActivo = () => {
             {/* <div className="title">
                 <h1>Nuevo Modelo Activo</h1>
             </div> */}
-            <PageTitle title="Nuevo Modelo" origin={origen} />
+            <PageTitle title="Nuevo Modelo" origen={origen} />
 
             <div className="content">
                 <form class="add-form" action="/" method="">

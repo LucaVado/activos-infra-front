@@ -58,6 +58,13 @@ main{
   background: #3D9CFF;
   color: #FFFFFF;
 }
+
+.loading-label{
+  font-size: 25px;
+  font-weight: bold;
+  color: #002A52;
+}
+
 .icon, .link_text{
   font-size: 20px;
 }
