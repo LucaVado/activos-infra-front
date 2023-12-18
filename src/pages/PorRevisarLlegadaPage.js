@@ -47,7 +47,7 @@ const PorRevisarLlegada = () => {
       <PageTitle title= "Activos por revisar llegada" origen={origen}/>
       <div className="content">
         <div className="title-table">
-          <TitleTable tableName='Activos en transito' page='/nuevo-activo' button='+ Nuevo' />
+          <TitleTable tableName='Activos' page='/nuevo-activo' button='+ Nuevo' />
         </div>
         <div>
           {data && data.activos && data.activos.length > 0 ? (
