@@ -26,7 +26,7 @@ const Dashboard = () => {
   console.log(user);
 
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
-  const dataProyectosPorConfigurar = useFetch(`${API_BASE_URL}/proyecto/get-all`);
+  const dataProyectosPorConfigurar = useFetch(`${API_BASE_URL}/proyecto/get-all-estatus?estatus=Entrada`);
   const dataEntransito = useFetch(`${API_BASE_URL}/activos/get-all-estatus?estatus=Entransito`);
   const dataProyectosEnTransito = useFetch(`${API_BASE_URL}/proyecto/get-all`);
   const dataEquipoCCTV = useFetch(`${API_BASE_URL}/activos/get-all-tipo?tipo=CCTV`);
@@ -67,12 +67,12 @@ const Dashboard = () => {
     }
   ];
 
-  console.log(dataProyectosPorConfigurar.data);
-  if (dataProyectosPorConfigurar.data && dataProyectosPorConfigurar.data.proyecto && dataProyectosPorConfigurar.data.proyecto.length) {
-    dashData[0].cantidad = dataProyectosPorConfigurar.data.proyecto.length;
+  // console.log(dataProyectosPorConfigurar.data);
+  if (dataProyectosPorConfigurar.data && dataProyectosPorConfigurar.data.proyectos && dataProyectosPorConfigurar.data.proyectos.length) {
+    dashData[0].cantidad = dataProyectosPorConfigurar.data.proyectos.length;
   }
   if (dataEntransito.data && dataEntransito.data.activos && dataEntransito.data.activos.length) {
-    dashData[1].cantidad = dataEntransito.data.proyecto.length;
+    dashData[1].cantidad = dataEntransito.data.activos.length;
   }
   if (dataProyectosEnTransito.data && dataProyectosEnTransito.data.proyecto && dataProyectosEnTransito.data.proyecto.length) {
     dashData[2].cantidad = dataProyectosEnTransito.data.proyecto.length;

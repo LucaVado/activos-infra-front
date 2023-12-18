@@ -29,7 +29,7 @@ const NuevoActivo = () => {
     const [numeroActivo, setNumeroActivo] = useState("");
     const [fechaEntrada, setFechaEntrada] = useState(dataProyecto ? dataProyecto.fechaEntrada : "");
     const [fechaSalida, setFechaSalida] = useState(dataProyecto ? dataProyecto.fechaSalida : "");
-    const [estatus, setEstatus] = useState(dataProyecto ? dataProyecto.fechaEntrada : "Entrada");
+    const [estatus, setEstatus] = useState(dataProyecto ? dataProyecto.estatus : "Entrada");
     const [folio, setFolio] = useState("");
     const [guia, setGuia] = useState(dataProyecto ? dataProyecto.guia : "");
     const [razon, setRazon] = useState(dataProyecto ? dataProyecto.razon : "Incremento");
