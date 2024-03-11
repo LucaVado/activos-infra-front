@@ -10,6 +10,7 @@ import API_BASE_URL from "../config";
 const Proyectos = () =>{
   const location = useLocation();
   const origen = location.state ? location.state.origen : "/";
+  console.log(".....",origen);
   const { data } = useFetch(`${API_BASE_URL}/proyecto/get-all`);
   console.log(data);
   // console.log(data.proyecto);
@@ -36,6 +37,7 @@ if (data.proyecto.length === 0) {
     <div className="container-content">
       <PageTitle title= "Proyectos" origen={origen}/>
       <div className="content">
+        <TitleTable tableName="Proyectos" page='/nuevo-proyecto' button="+ Nuevo"/>
       <p className="loading-label">Agrega un proyecto!</p>
       </div>
     </div>
