@@ -43,6 +43,11 @@ const Login = (/* { setIsLoggedIn } */) => {
 
         }
       };
+    const handleKeyPress = (event) => {
+        if (event.key === "Enter") {
+            handleLogin();
+        }
+    };
 
     // const handleLogin = async (event) => {
     //     event.preventDefault();
@@ -87,26 +92,28 @@ const Login = (/* { setIsLoggedIn } */) => {
                         <label style={{fontSize:"20px", marginTop:"8px"}}>Inicia Sesión</label>
                     </div>
                     <div className='form-control-login'>
-                        <label for="correo">Correo</label>
+                        <label htmlFor="correo">Correo</label>
                         <input
                             type="text"
                             id='correo'
                             placeholder="Correo"
                             value={correo}
                             onChange={(e) => setCorreo(e.target.value)}
+                            onKeyPress={handleKeyPress}
                         />
                     </div>
                     <div className='form-control-login'>
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
                             placeholder="Contraseña"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            onKeyPress={handleKeyPress}
                         />
                     </div>
                     <div>
-                        <div className="form-button-login"><button class="btn-login" type="button" onClick={handleLogin}>Iniciar Sesión</button></div>
+                        <div className="form-button-login"><button className="btn-login" type="button" onClick={handleLogin}>Iniciar Sesión</button></div>
                     </div>
                 </form>
             </div>
