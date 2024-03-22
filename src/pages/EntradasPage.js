@@ -30,7 +30,7 @@ const Entradas = () => {
     ); 
   }
 
-  if (!data.activos) {
+  if (data.activos.keys()) {
     return(
       <div className="container-content">
         <PageTitle title= "Activos con entrada" origen={origen}/>
