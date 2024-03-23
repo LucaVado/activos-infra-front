@@ -51,7 +51,7 @@ const Entradas = () => {
           <TitleTable tableName='Activos' page='/nuevo-activo' button='+ Nuevo' />
         </div>
         <div>
-          {data && data.activos && data.activos.length > 0 ? (
+          {data.activos.length > 0 ? (
             <DataTable columns={columns} data={data.activos} pages={pages} />
           ) : (
             <p className="loading-label">Cargando...</p>
