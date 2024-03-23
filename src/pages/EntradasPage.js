@@ -32,21 +32,26 @@ const Entradas = () => {
 
   if (data.activos.keys()) {
     return(
-      <div className="container-content">
-        <PageTitle title= "Activos con entrada" origen={origen}/>
-        <p className="loading-label">Agrega un activo!</p>;
-      </div>
-    ); 
+        <div className="container-content">
+            <PageTitle title="Activos con entrada" origen={origen}/>
+            <div className="content">
+            <div className="title-table">
+                <TitleTable tableName='Activos' page='/nuevo-activo' button='+ Nuevo'/>
+            </div>
+            <p className="loading-label">Agrega un activo!</p>
+            </div>
+        </div>
+    );
   }
-  return (
-    <div className="container-content">
-      <PageTitle title= "Activos con entrada" origen={origen}/>
-      <div className="content">
+    return (
+        <div className="container-content">
+            <PageTitle title="Activos con entrada" origen={origen}/>
+            <div className="content">
         <div className="title-table">
           <TitleTable tableName='Activos' page='/nuevo-activo' button='+ Nuevo' />
         </div>
         <div>
-          {data && data.activos && data.activos.length > 0 ? (
+          {data.activos.length > 0 ? (
             <DataTable columns={columns} data={data.activos} pages={pages} />
           ) : (
             <p className="loading-label">Cargando...</p>
