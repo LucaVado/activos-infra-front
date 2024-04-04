@@ -1,18 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,700&display=swap');
 
-*{
-  margin:0;
-  padding:0;
+*,
+*::before,
+*::after
+{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   text-decoration: none;
   font-family: 'Roboto Flex', sans-serif
 }
+
+html
+{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body
+{
+  width: 100%;
+  height: 100%;
+}
+
 .container{
   display:flex;
 }
 main{
   width: 100%;
-  padding: 0px;
-  overflow-x: hidden;
+  padding: 0;
 }
 .sidebar{
   background: #F4F6F7;
