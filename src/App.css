@@ -47,6 +47,7 @@ body
   grid-template-areas:
     "navbar"
     "sidecontent";
+  overflow: hidden;
 border: solid red 5px;
 }
 
@@ -123,22 +124,30 @@ main{
 }
 
 .navbar{
+  width: 100%;
+  height: 100%;
   grid-area: navbar;
   display: flex;
   justify-content: space-between;
   background-color: #002A52;
   align-items: center;
-  border: solid black 5px;
+  border: solid yellow 5px;
+}
+
+.logout-navbar
+{
+  height: 100%;
 }
 
 .logout-button{
   border: none;
   cursor: pointer;
-  height: 4rem;
+  height: 100%;
 }
 
 .logout-img{
-  height: 4rem;
+  height: 100%;
+
 }
 
 .logo-navbar{
