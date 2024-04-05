@@ -55,6 +55,7 @@ const App = () =>{
       <ToastContainer />
       <Navbar />
       <div className="sidecontent">
+          {/*
       <BrowserRouter>
         <Sidebar>
           <Routes>
@@ -89,6 +90,7 @@ const App = () =>{
             </Routes>
           </Sidebar>        
       </BrowserRouter>
+      */}
     </div>
     </div>
   );

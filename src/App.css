@@ -24,22 +24,40 @@ body
   height: 100%;
 }
 
+#root
+{
+  width: 100%;
+  height: 100%;
+}
+
 .containerLogin
 {
   border: solid purple 5px;
 }
+
 .containerGeneral
 {
+
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 90%;
+  gap: 0 0;
+  grid-template-areas:
+    "navbar"
+    "sidecontent";
 border: solid red 5px;
 }
 
 .sidecontent
 {
+  grid-area: sidecontent;
  border: solid magenta 5px;
 }
 
 .container{
-  grid-area: sidecontent;
+
   display:flex;
   border: solid black 5px;
 }
@@ -106,8 +124,6 @@ main{
 
 .navbar{
   grid-area: navbar;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #002A52;
@@ -116,10 +132,9 @@ main{
 }
 
 .logout-button{
-  border: solid yellow 5px;
+  border: none;
   cursor: pointer;
-  width: 100%;
-  height: 100%;
+  height: 4rem;
 }
 
 .logout-img{
@@ -129,14 +144,13 @@ main{
 .logo-navbar{
   width: 200px;
   height: 40px;
-  border: solid yellow 5px;
-
+  flex-shrink: 0;
+  align-items: center;
 }
 
 .logo-navbar img{
-  width: 100%;
-  height: 100%;
-  border: solid green 5px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 @media (max-width: 768px) {
@@ -154,7 +168,7 @@ main{
   }
   
   .logo-navbar {
-    margin-left: 0px; 
+    margin-left: 0px;
     padding: 0;
   }
 }
