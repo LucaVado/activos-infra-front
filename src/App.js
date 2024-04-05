@@ -42,7 +42,7 @@ const App = () =>{
 
   if (!isLoggedIn) {
     return (
-      <div>
+      <div className="containerLogin">
         <ToastContainer />
         <BrowserRouter>
             <Login />
@@ -51,7 +51,7 @@ const App = () =>{
     );
   }
   return (
-      <div>
+      <div className="containerGeneral">
       <ToastContainer />
       <Navbar />
       <div>
