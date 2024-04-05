@@ -54,7 +54,7 @@ const App = () =>{
       <div className="containerGeneral">
       <ToastContainer />
       <Navbar />
-      <div>
+      <div className="sidecontent">
       <BrowserRouter>
         <Sidebar>
           <Routes>
