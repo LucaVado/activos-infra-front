@@ -53,13 +53,23 @@ border: solid red 5px;
 
 .sidecontent
 {
+  height: 100%;
+  width: 100%;
   grid-area: sidecontent;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100%;
+  gap: 0 0;
+  grid-template-areas:
+    "sidebar"
+    "container";
  border: solid magenta 5px;
 }
 
 .container{
-
-  display:flex;
+  grid-area: container;
+  height: 100%;
+  width: 100%;
   border: solid black 5px;
 }
 main{
@@ -68,11 +78,13 @@ main{
 
 }
 .sidebar{
+  grid-area: sidebar;
   background: #F4F6F7;
   color: #212F3D;
-  height: 100vh;
-  width: 300px;
+  height: 100%;
+  width: 100%;
   transition: all 0.5s;
+  border: solid saddlebrown 5px;
 }
 .top_section{
   display: flex;
