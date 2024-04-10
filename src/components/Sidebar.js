@@ -70,6 +70,7 @@ const Sidebar = ({ children }) => {
     return (
         <div className="container">
             <div style={{ width: isOpen ? "300px" : "60px" }} className="sidebar">
+                {/**/}
                 <div className="top-section"></div>
                 <div style={{ marginLeft: isOpen ? "20px" : "20px" }} className="bars">
                     <FaBars onClick={toggle} />

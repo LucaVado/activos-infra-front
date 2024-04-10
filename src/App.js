@@ -55,9 +55,10 @@ const App = () =>{
       <ToastContainer />
       <Navbar />
       <div className="sidecontent">
-          {/*
+
       <BrowserRouter>
         <Sidebar>
+
           <Routes>
               <Route path="/" element={<Dashboard/>} />
               <Route path="/equipoCctv" element={<EquipoCctv />} />
@@ -88,9 +89,10 @@ const App = () =>{
                 <Route path="/users" element={<UsersPage/>} />
               }
             </Routes>
+         
           </Sidebar>        
       </BrowserRouter>
-      */}
+
     </div>
     </div>
   );
