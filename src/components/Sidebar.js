@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useAuth } from "./AuthContext";
@@ -69,7 +69,7 @@ const Sidebar = ({ children }) => {
 
     return (
         <div className="container" style={{
-            gridTemplateColumns: isOpen ? "25% 75%" : "10% 90%"
+            gridTemplateColumns: isOpen ? "270px minmax(0, 1fr)" : "65px minmax(0, 1fr)"
         }}>
             <div /*style={{ width: isOpen ? "100%" : "60px" }}*/ className="sidebar">
                 {/**/}
