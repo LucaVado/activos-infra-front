@@ -78,7 +78,7 @@ const Sidebar = ({ children }) => {
                     <FaBars onClick={toggle} />
                     <div style={{ display: isOpen ? "block" : "none" }} className="link_text">Menu</div>
                 </div>
-                <div>
+                <div className="iconosSideBar">
                     {menuItem.map(
                         (item, index) =>
                             !(item.path === "/users" && !isAdmin) && (

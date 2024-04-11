@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  font-family: 'Roboto Flex', sans-serif
+  font-family: 'Roboto Flex', sans-serif;
 }
 
 html
@@ -89,18 +89,38 @@ grid-area: main;
   width: 100%;
   transition: all 0.5s;
   border: solid saddlebrown 5px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto;
+  gap: 0 0;
+  grid-template-areas:
+    "top_section"
+    "iconosSideBar";
 }
+
 .top_section{
+
   display: flex;
   align-items:center;
   padding:20px 15px;
   gap:15px;
   height: 40px;
+
+}
+.iconosSideBar
+{
+  grid-area: iconosSideBar;
+  border: solid aquamarine 5px;
+  overflow-y: auto;
+  height: 100%;
 }
 .logo{
   font-size: 30px;
 }
 .bars{
+  grid-area: top_section;
+  border: solid gold 5px;
   display: flex;
   font-size: 25px;
   margin-left: 50px;
