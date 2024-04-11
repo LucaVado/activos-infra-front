@@ -69,12 +69,12 @@ const Sidebar = ({ children }) => {
 
     return (
         <div className="container" style={{
-            gridTemplateColumns: isOpen ? "270px minmax(0, 1fr)" : "65px minmax(0, 1fr)"
+            gridTemplateColumns: isOpen ? "270px minmax(0, 1fr)" : "70px minmax(0, 1fr)"
         }}>
             <div /*style={{ width: isOpen ? "100%" : "60px" }}*/ className="sidebar">
                 {/**/}
-                <div className="top-section"></div>
-                <div style={{ marginLeft: isOpen ? "20px" : "20px" }} className="bars">
+
+                <div style={{ paddingLeft: isOpen ? "15px" : "15px" }} className="bars">
                     <FaBars onClick={toggle} />
                     <div style={{ display: isOpen ? "block" : "none" }} className="link_text">Menu</div>
                 </div>

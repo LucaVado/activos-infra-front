@@ -9,6 +9,7 @@
   padding: 0;
   text-decoration: none;
   font-family: 'Roboto Flex', sans-serif;
+  border: solid black 2px;
 }
 
 html
@@ -92,22 +93,14 @@ grid-area: main;
   overflow: hidden;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 1fr;
   gap: 0 0;
   grid-template-areas:
-    "top_section"
+    "bars"
     "iconosSideBar";
 }
 
-.top_section{
 
-  display: flex;
-  align-items:center;
-  padding:20px 15px;
-  gap:15px;
-  height: 40px;
-
-}
 .iconosSideBar
 {
   grid-area: iconosSideBar;
@@ -119,11 +112,10 @@ grid-area: main;
   font-size: 30px;
 }
 .bars{
-  grid-area: top_section;
+  grid-area: bars;
   border: solid gold 5px;
   display: flex;
   font-size: 25px;
-  margin-left: 50px;
   height: 45px;
   font-weight: bold;
   transition: all 0.5s;
@@ -134,7 +126,7 @@ grid-area: main;
 .link{
   display: flex;
   color: #212F3D;
-  padding: 10px 15px;
+  padding: 10px 10px;
   gap: 15px;
   transition: all 0.5s;
   font-weight: bold;
