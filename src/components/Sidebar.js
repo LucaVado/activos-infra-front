@@ -68,8 +68,10 @@ const Sidebar = ({ children }) => {
     const location = useLocation();
 
     return (
-        <div className="container">
-            <div style={{ width: isOpen ? "100%" : "60px" }} className="sidebar">
+        <div className="container" style={{
+            gridTemplateColumns: isOpen ? "25% 75%" : "10% 90%"
+        }}>
+            <div /*style={{ width: isOpen ? "100%" : "60px" }}*/ className="sidebar">
                 {/**/}
                 <div className="top-section"></div>
                 <div style={{ marginLeft: isOpen ? "20px" : "20px" }} className="bars">
