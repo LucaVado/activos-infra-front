@@ -11,6 +11,7 @@
   .page-title-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     border: 5px solid #D7DBDD;
   }
   
@@ -36,8 +37,7 @@
   }
 
   .title h1{
-    margin-left: 20px;
-    font-size: 5vw;
+    font-size: min(max(20px, 5vw), 40px);
   }
 
   .title-table{
