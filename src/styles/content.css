@@ -62,23 +62,20 @@
 
   .dashboard{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 1%;
-    grid-row-gap: 1%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    grid-template-columns: repeat(3, 32%);
+    grid-template-rows: repeat(2, 49%);
+    grid-column-gap: 2%;
+    grid-row-gap: 1.5%;
 
   }
 
   .dashboard-item {
-    height: 150px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    padding-top: 0;
     border: 1px solid #ccc;
     border-radius: 8px;
     text-align: center;
@@ -87,13 +84,13 @@
   }
   
   .dashboard-item h1 {
-    font-size: 24px;
+    font-size: min(max(15px, 4vw), 50px);
     margin: 10px 0;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
   
   .dashboard-item .conteo {
-    font-size: 36px;
+    font-size: min(max(40px, 7vw), 60px);
     font-weight: bold;
   }
 
