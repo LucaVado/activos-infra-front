@@ -5,8 +5,6 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  border: solid red 5px;
-
 
   }
 
@@ -14,13 +12,14 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     border: 5px solid #D7DBDD;
     overflow: hidden;
+    padding: 5px 5px 5px 10px;
   }
   
   .back-button-container {
-    margin-right: 10px; 
+    margin-right: 10px;
   }
 
   .back-button-container img{
@@ -46,7 +45,6 @@
 
   .title-table{
       width: 100%;
-      border: solid red 5px;
       overflow: hidden;
   }
 
@@ -57,7 +55,7 @@
     border-top: 0 solid #D7DBDD;
     overflow-y: auto;
     overflow-x: hidden;
-
+    padding: 5px;
   }
 
   .dashboard{

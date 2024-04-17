@@ -33,7 +33,7 @@ body
 
 .containerLogin
 {
-  border: solid purple 5px;
+
 }
 
 .containerGeneral
@@ -49,7 +49,7 @@ body
     "navbar"
     "sidecontent";
   overflow: hidden;
-border: solid red 5px;
+
 }
 
 .sidecontent
@@ -58,7 +58,6 @@ border: solid red 5px;
   width: 100%;
   grid-area: sidecontent;
 
- border: solid magenta 5px;
 }
 
 .container{
@@ -72,14 +71,14 @@ border: solid red 5px;
   grid-auto-flow: row;
   grid-template-areas:
     "sidebar main";
-  border: solid black 5px;
+
   transition: grid-template-columns 0.5s ease;
 }
 main{
 grid-area: main;
   width: 100%;
   height: 100%;
-  border: solid green 5px;
+
   overflow: hidden;
 }
 .sidebar{
@@ -89,7 +88,7 @@ grid-area: main;
   height: 100%;
   width: 100%;
   transition: all 0.5s;
-  border: solid saddlebrown 5px;
+
   overflow: hidden;
   display: grid;
   grid-template-columns: 100%;
@@ -104,7 +103,7 @@ grid-area: main;
 .iconosSideBar
 {
   grid-area: iconosSideBar;
-  border: solid aquamarine 5px;
+
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
@@ -114,7 +113,6 @@ grid-area: main;
 }
 .bars{
   grid-area: bars;
-  border: solid gold 5px;
   display: flex;
   font-size: 25px;
   height: 45px;
@@ -160,7 +158,6 @@ grid-area: main;
   justify-content: space-between;
   background-color: #002A52;
   align-items: center;
-  border: solid yellow 5px;
 }
 
 .logout-navbar
