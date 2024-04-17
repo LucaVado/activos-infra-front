@@ -69,7 +69,7 @@ const Sidebar = ({ children }) => {
 
     return (
         <div className="container" style={{
-            gridTemplateColumns: isOpen ? "270px minmax(0, 1fr)" : "70px minmax(0, 1fr)"
+            gridTemplateColumns: isOpen ? "180px minmax(0, 1fr)" : "50px minmax(0, 1fr)"
         }}>
             <div /*style={{ width: isOpen ? "100%" : "60px" }}*/ className="sidebar">
                 {/**/}
