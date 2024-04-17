@@ -2,34 +2,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 5px;
+  border: solid blue 5px;
 }
 
 .table-title h3 {
+  font-size: min(max(14px, 3vw), 35px);
   border-bottom: 2px solid #212F3D;
-  padding-bottom: 5px;
-  text-decoration: none;
-  color: #212F3D;
+
 }
 
-.new-link .button {
-  border: none;
-  padding: 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-}
 
 .new-link .button span h4 {
   border-bottom: 2px solid #212F3D;
   color: #212F3D;
-  padding-bottom: 5px;
+  font-size: min(max(14px, 3vw), 35px);
 }
 
 .new-link :hover {
-  background-color: #F4F6F7;
+  background-color: #f2f2f2;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }

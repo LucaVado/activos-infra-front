@@ -45,9 +45,9 @@
   }
 
   .title-table{
-    height: 1.5rem;
-    margin-bottom: 20px;
-
+      width: 100%;
+      border: solid red 5px;
+      overflow: hidden;
   }
 
   .content {
