@@ -6,6 +6,8 @@
   margin: 0;
   padding: 0;
   border: solid red 5px;
+
+
   }
 
   .page-title-container {
@@ -46,11 +48,13 @@
   }
 
   .content {
-    flex: 1; /* Ocupa el espacio restante verticalmente */
-    padding: 45px;
-    padding-top: 20px;
+    height: 100%;
+    width: 100%;
     border: 5px solid #D7DBDD;
-    border-top: 0px solid #D7DBDD;
+    border-top: 0 solid #D7DBDD;
+    overflow-y: auto;
+    overflow-x: hidden;
+
   }
 
   .dashboard{
