@@ -4,7 +4,8 @@
   height: 100%;
 }
 
-.login-container {
+.login-container
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,23 +13,23 @@
     background-color: #002A52;
     width: 100%;
     height: 100%;
-    border: solid red 5px;
 }
 
-.logo-login {
+.logo-login
+{
     display: flex;
     justify-content: center;
     margin-bottom: 10%;
-    border: solid blue 5px;
 }
 
-.logo-login img {
+.logo-login img
+{
     max-width: 200px;
     height: auto;
-    border: solid red 5px;
 }
 
-.login-form {
+.login-form
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,10 +41,10 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #FFFFFF;
-    border: solid yellow 5px;
 }
 
-.form-control-login {
+.form-control-login
+{
     width: 100%;
     margin-bottom: 20px;
     display: inline-flex;
@@ -53,30 +54,31 @@
     font-size: 16px;
     font-weight: bold;
     color: #002A52;
-    border: solid black 5px;
 }
 
-.form-control-login label {
+.form-control-login label
+{
     display: block;
     margin-bottom: 5px;
-    border: solid orange 5px;
 }
 
-.form-control-login input {
+.form-control-login input
+{
     width: 100%;
     max-width: 80%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    border: solid darkslategray 5px;
 }
 
-.form-button-login {
+.form-button-login
+{
     width: 100%;
-    border: solid aqua 5px;
+
 }
 
-.btn-login {
+.btn-login
+{
     width: 100%;
     padding: 10px;
     border: none;
@@ -85,20 +87,19 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    border: solid yellowgreen 5px;
+
 }
 
-.btn-login:hover {
+.btn-login:hover
+{
     background-color: #1e6cb3;
-    border: solid indigo 5px;
+
 }
 
-@media screen and (max-width: 600px) {
-  .login-container {
-        width: 100%; /* Puedes ajustar según tus necesidades */
-  }
-
-  .form-control-login input {
+@media screen and (max-width: 600px)
+{
+  .form-control-login input
+  {
       width: 100%;
       max-width: 100%;
   }

@@ -1,7 +1,6 @@
 .table-container {
   width: 100%;
   overflow-x: auto;
-  min-width: 600px;
   padding-top: 10px;
   margin: auto;
   max-height: 400px;
@@ -88,16 +87,9 @@
 @media (max-width: 768px) {
   .header-cell,
   .table-cell {
-    padding: 6px;
-    font-size: 14px;
+    padding: 3px;
+    font-size: 13px;
   }
 
-  .table-container {
-    width: 100%;
-    overflow-x: auto;
-    min-width: 300px;
-    padding-top: 10px;
-    margin: auto;
-  }
 }
 
