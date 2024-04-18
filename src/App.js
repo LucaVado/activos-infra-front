@@ -42,7 +42,7 @@ const App = () =>{
 
   if (!isLoggedIn) {
     return (
-      <div>
+      <div className="containerLogin">
         <ToastContainer />
         <BrowserRouter>
             <Login />
@@ -51,12 +51,14 @@ const App = () =>{
     );
   }
   return (
-      <div>
+      <div className="containerGeneral">
       <ToastContainer />
       <Navbar />
-      <div>
+      <div className="sidecontent">
+
       <BrowserRouter>
         <Sidebar>
+
           <Routes>
               <Route path="/" element={<Dashboard/>} />
               <Route path="/equipoCctv" element={<EquipoCctv />} />
@@ -87,8 +89,10 @@ const App = () =>{
                 <Route path="/users" element={<UsersPage/>} />
               }
             </Routes>
+         
           </Sidebar>        
       </BrowserRouter>
+
     </div>
     </div>
   );

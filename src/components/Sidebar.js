@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useAuth } from "./AuthContext";
@@ -68,14 +68,17 @@ const Sidebar = ({ children }) => {
     const location = useLocation();
 
     return (
-        <div className="container">
-            <div style={{ width: isOpen ? "300px" : "60px" }} className="sidebar">
-                <div className="top-section"></div>
-                <div style={{ marginLeft: isOpen ? "20px" : "20px" }} className="bars">
+        <div className="container" style={{
+            gridTemplateColumns: isOpen ? "180px minmax(0, 1fr)" : "50px minmax(0, 1fr)"
+        }}>
+            <div /*style={{ width: isOpen ? "100%" : "60px" }}*/ className="sidebar">
+                {/**/}
+
+                <div style={{ paddingLeft: isOpen ? "15px" : "15px" }} className="bars">
                     <FaBars onClick={toggle} />
                     <div style={{ display: isOpen ? "block" : "none" }} className="link_text">Menu</div>
                 </div>
-                <div>
+                <div className="iconosSideBar">
                     {menuItem.map(
                         (item, index) =>
                             !(item.path === "/users" && !isAdmin) && (
