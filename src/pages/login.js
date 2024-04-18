@@ -82,7 +82,7 @@ const Login = (/* { setIsLoggedIn } */) => {
     // };
 
     return (
-        <div>
+        <div className="loginGeneral">
             <div className='login-container'>
                 <div className='logo-login'>
                     <img src="/images/icons/paquetexpress-logo-navbar.svg" alt="Logo" />

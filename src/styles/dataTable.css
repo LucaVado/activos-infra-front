@@ -1,24 +1,30 @@
-.table-container{
+.table-container {
   width: 100%;
-  overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
-  min-width: 600px;
+  overflow-x: auto;
   padding-top: 10px;
   margin: auto;
   max-height: 400px;
 }
 
+.table-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 .data-table {
-  width: 100%;
+  width:100%;
   border-collapse: collapse;
   border: 1px solid #e0e0e0;
 }
-.header-cell, .table-cell {
+
+.header-cell,
+.table-cell {
   text-align: center;
 }
 
 .table-header {
   border-bottom: 1px solid #e0e0e0;
-  background: #3D9CFF;
+  background: #3d9cff;
   color: #ffffff;
 }
 
@@ -27,8 +33,20 @@
   font-family: "Roboto Flex", sans-serif;
   font-weight: bold;
   border-color: #000;
-} 
+}
 
+.fixed-cell {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  background-color: #3d9cff;
+}
+.fixed-cell-content {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  background-color: #f4f6f7;
+}
 .table-body {
 }
 
@@ -38,7 +56,7 @@
 }
 
 .even {
-  background-color: #F4F6F7;
+  background-color: #f4f6f7;
 }
 
 .odd {
@@ -51,101 +69,27 @@
   color: #000;
 }
 
-.actions-button{
-  width: 50px; 
-  height: 50px; 
+.actions-button {
+  width: 50px;
+  height: 50px;
   padding: 0;
   border: none;
   background: none;
   border-radius: 8px;
 }
 
-.actions-button :hover{
+.actions-button :hover {
   cursor: pointer;
-  background-color: #D7DBDD;
+  background-color: #d7dbdd;
   border-radius: 4px;
 }
 
 @media (max-width: 768px) {
-  .header-cell, .table-cell {
-    padding: 6px;
-    font-size: 14px;
+  .header-cell,
+  .table-cell {
+    padding: 3px;
+    font-size: 13px;
   }
 
-  .table-container{
-    width: 100%;
-    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si el contenido es demasiado ancho */
-    min-width: 300px;
-    padding-top: 10px;
-    margin: auto;
-  }
 }
 
-/* .data-table {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #e0e0e0;
-    min-width: 300px;
-  }
-  
-  .table-header {
-    display: flex;
-    border-bottom: 1px solid #e0e0e0;
-    background: #3D9CFF;
-    color: #ffffff;
-    border-color: #000;
-  }
-  
-  .header-cell {
-    flex: 1;
-    padding: 12px;
-    font-family: "Roboto Flex", sans-serif;
-    font-weight: bold;
-    border-color: #000;
-    color: #e0e0e0;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
-  .table-body {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .table-row {
-    display: flex;
-    border-bottom: 1px solid #e0e0e0;
-    align-items: center;
-  }
-  
-  .even {
-    background-color: #f9f9f9;
-  }
-  
-  .odd {
-    background-color: #ffffff;
-  }
-  
-  .table-cell {
-    flex: 1;
-    padding: 12px;
-    font-family: "Roboto Flex", sans-serif;
-    color: #000;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  @media (max-width: 768px) {
-    /* .data-table {
-      flex-direction: column;
-    } */
-    /* .table-header, .table-row {
-      flex-direction: column;
-    } 
-    .header-cell, .table-cell {
-      padding: 6px;
-      font-size: 14px;
-    }
-  } */
