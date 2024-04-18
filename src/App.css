@@ -9,7 +9,6 @@
   padding: 0;
   text-decoration: none;
   font-family: 'Roboto Flex', sans-serif;
-
 }
 
 html
@@ -39,7 +38,6 @@ body
 
 .containerGeneral
 {
-
   width: 100%;
   height: 100%;
   display: grid;
@@ -50,7 +48,6 @@ body
     "navbar"
     "sidecontent";
   overflow: hidden;
-
 }
 
 .sidecontent
@@ -58,11 +55,10 @@ body
   height: 100%;
   width: 100%;
   grid-area: sidecontent;
-
 }
 
-.container{
-
+.container
+{
   height: 100%;
   width: 100%;
   display: grid;
@@ -72,24 +68,25 @@ body
   grid-auto-flow: row;
   grid-template-areas:
     "sidebar main";
-
   transition: grid-template-columns 0.5s ease;
 }
-main{
-grid-area: main;
+
+main
+{
+  grid-area: main;
   width: 100%;
   height: 100%;
-
   overflow: hidden;
 }
-.sidebar{
+
+.sidebar
+{
   grid-area: sidebar;
   background: #F4F6F7;
   color: #212F3D;
   height: 100%;
   width: 100%;
   transition: all 0.5s;
-
   overflow: hidden;
   display: grid;
   grid-template-columns: 100%;
@@ -100,7 +97,6 @@ grid-area: main;
     "iconosSideBar";
 }
 
-
 .iconosSideBar
 {
   grid-area: iconosSideBar;
@@ -109,10 +105,14 @@ grid-area: main;
   overflow-x: hidden;
   height: 100%;
 }
-.logo{
+
+.logo
+{
   font-size: 30px;
 }
-.bars{
+
+.bars
+{
   grid-area: bars;
   display: flex;
   font-size: 25px;
@@ -123,7 +123,9 @@ grid-area: main;
   align-items: center;
   cursor: pointer;
 }
-.link{
+
+.link
+{
   display: flex;
   color: #212F3D;
   padding: 10px 10px;
@@ -131,27 +133,34 @@ grid-area: main;
   transition: all 0.5s;
   font-weight: bold;
 }
-.link:hover{
+
+.link:hover
+{
   background:#CCD1D1;
   color: #212F3D;
   transition: all 0.5s;
 }
-.active{
+
+.active
+{
   background: #3D9CFF;
   color: #FFFFFF;
 }
 
-.loading-label{
+.loading-label
+{
   font-size: 25px;
   font-weight: bold;
   color: #002A52;
 }
 
-.icon, .link_text{
+.icon, .link_text
+{
   font-size: 20px;
 }
 
-.navbar{
+.navbar
+{
   width: 100%;
   height: 100%;
   grid-area: navbar;
@@ -166,24 +175,39 @@ grid-area: main;
   height: 100%;
 }
 
-.logout-button{
+.logout-button
+{
   border: none;
   cursor: pointer;
   height: 100%;
   background-color: #002A52;
 }
 
-.logout-img{
+
+
+.logout-img
+{
   height: 100%;
   width: 100%;
-
+  padding: 10px;
 }
 
-.logo-navbar{
+.logout-img:hover
+{
+  box-shadow: inset 0 0 20px rgba(49, 138, 172, 0.5), 0 0 20px rgba(49, 138, 172, 0.4);
+  outline-color: rgba(49, 138, 172, 0);
+  outline-offset: 80px;
+  text-shadow: 1px 1px 6px #fff;
+}
+
+.logo-navbar
+{
   height: 100%;
 }
 
-.logo-navbar img{
+.logo-navbar img
+{
   height: 100%;
   width: 100%;
+  padding: 10px;
 }
