@@ -108,6 +108,7 @@
 {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 30px;
 }
 
@@ -120,8 +121,8 @@
 
 .button-proyect
 {
+  width: min(max(50px, 100%), 300px);
   padding: 12px;
-  width: 150px;
   background-color: #3D9CFF;
   border: none;
   border-radius: 8px;
