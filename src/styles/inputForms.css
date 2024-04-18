@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,700&display=swap');
 
-.add-form {
+.add-form
+{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     padding: 25px;
     padding-top: 0;
+    overflow: hidden;
 }
 
-.form-control {
+.form-control
+{
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
@@ -18,8 +21,9 @@
 }
 
 .form-control input, 
-.form-control select {
-    width: 250px;
+.form-control select
+{
+    width: 100%;
     height: 40px;
     padding: 8px;
     margin: 5px;
@@ -31,20 +35,26 @@
     font-family: 'Roboto Flex', sans-serif;
 }
 
-.form-control input:focus {
+.form-control input:focus
+{
     border-color: #003087;
     outline: none; 
 }
 
-.form-control input:focus::placeholder {
+.form-control input:focus::placeholder
+{
     color: #212F3D; 
 }
 
-.form-button{
+.form-button
+{
     padding: 12px;
+    display: flex;
+    justify-content: center;
 }
 
-.btn-buscar-modelo{
+.btn-buscar-modelo
+{
     width: 110px;
     height: 40px;
     background-color: #3D9CFF;
@@ -57,12 +67,13 @@
     cursor: pointer;
 }
 
-.btn-buscar-modelo:hover{
+.btn-buscar-modelo:hover
+{
     background-color: #2C7AB3;
-    
 }
 
-.btn{
+.btn
+{
     width: 100px;
     height: 40px;
     background-color: #58D68D;
@@ -75,16 +86,19 @@
     font-family: 'Roboto Flex', sans-serif;
 }
 
-.btn:hover{
+.btn:hover
+{
     background-color: #3E8F6B;
 }
 
-@media (max-width: 768px) {
-    .add-form {
+@media (max-width: 768px)
+{
+    .add-form
+    {
         display: flex;
         flex-direction: column;
         /* grid-template-columns: repeat(2,1fr); */
         padding: 25px;
         padding-top: 0;
     }
-  }
+}
