@@ -36,6 +36,7 @@ import EditarActivo from "./pages/activo/EditarActivo";
 import VerActivo from "./pages/activo/VerActivo";
 import RevisaLlegada from "./pages/proyecto/RevisarLlegada";
 import { AuthProvider, useAuth } from "./components/AuthContext";
+import {Busqueda} from "./pages/Busqueda";
 
 const App = () =>{
   const { isLoggedIn, isAdmin } = useAuth();
@@ -84,6 +85,7 @@ const App = () =>{
               <Route path="/nuevo-modelo" element={<NuevoModeloActivo/>} />
               <Route path="/revisar-llegada" element={<RevisaLlegada/>} />
               <Route path="/login" element={<Login/>} />
+              <Route path="/buscar/:busqueda" element={<Busqueda/>} />
 
               if(isAdmin){
                 <Route path="/users" element={<UsersPage/>} />
