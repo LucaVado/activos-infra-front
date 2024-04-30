@@ -23,6 +23,12 @@ const Navbar = () => {
         <div className="navbar">
 
             <div className="logo-navbar"><img src="/images/icons/paquetexpress-logo-navbar.svg"></img></div>
+            <div className="search">
+                <form>
+                    <input type="text" id="serach_field"/>
+                    <button id="serach">Buscar</button>
+                </form>
+            </div>
             <div className="logout-navbar">
                 <button className="logout-button" onClick={handleLogout}>
                     <img className="logout-img" src="/images/icons/icono-logout2.svg" title="Cerrar Sesión" alt="View" />
