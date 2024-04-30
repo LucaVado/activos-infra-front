@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import swal from 'sweetalert';
 import { useAuth } from "./AuthContext";
 
@@ -19,14 +19,22 @@ const Navbar = () => {
             }
           })
     }
+
+    const [buscar, setBuscar] = useState("");
+
+   const hacerBusqueda = (e) => {
+       e.preventDefault()
+       console.log(e.target.search_field.value)
+   }
+
     return (
         <div className="navbar">
 
             <div className="logo-navbar"><img src="/images/icons/paquetexpress-logo-navbar.svg"></img></div>
             <div className="search">
-                <form>
-                    <input type="text" id="serach_field"/>
-                    <button id="serach">Buscar</button>
+                <form onSubmit={hacerBusqueda}>
+                    <input type="text" name="search_field"/>
+                    <input type="submit" id="serach" value="Buscar"/>
                 </form>
             </div>
             <div className="logout-navbar">
