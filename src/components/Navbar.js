@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import swal from 'sweetalert';
 import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 import '../App.css'
 
@@ -21,10 +22,13 @@ const Navbar = () => {
     }
 
     const [buscar, setBuscar] = useState("");
+    const navegar = useNavigate();
 
    const hacerBusqueda = (e) => {
        e.preventDefault()
-       console.log(e.target.search_field.value)
+       let mi_busqueda = e.target.search_field.value;
+       navegar("/buscar/" + mi_busqueda);
+
    }
 
     return (
