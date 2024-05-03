@@ -29,17 +29,23 @@ const Navbar = () => {
        let mi_busqueda = e.target.search_field.value;
        navegar("/buscar/" + mi_busqueda);
 
+
    }
+
+
+
 
     return (
         <div className="navbar">
 
             <div className="logo-navbar"><img src="/images/icons/paquetexpress-logo-navbar.svg"></img></div>
             <div className="search">
-                <form onSubmit={hacerBusqueda}>
-                    <input type="text" name="search_field"/>
-                    <input type="submit" id="serach" value="Buscar"/>
+                <form className="inputG" onSubmit={hacerBusqueda}>
+                    <input type="text" name="search_field" id="searchField" class="search-input" placeholder="Buscar..."/>
+                        <input type="submit" id="searchButton" class="search-button" value="Buscar"/>
                 </form>
+
+
             </div>
             <div className="logout-navbar">
                 <button className="logout-button" onClick={handleLogout}>

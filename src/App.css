@@ -211,3 +211,45 @@ main
   width: 100%;
   padding: 10px;
 }
+.search
+{
+  border: solid 5px white;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+}
+.inputG
+{
+  height: 80%;
+}
+.search-input {
+  width: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  transition: width 0.3s ease-in-out;
+}
+
+.search-input:hover,
+.search-input:focus {
+  width: 200px;
+}
+
+.search-button
+{
+  height: 100%;
+  background-color: #002A52;
+  color: #fff;
+  border: solid white 2px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.search-button:hover {
+  background-color: #2980b9;
+}
