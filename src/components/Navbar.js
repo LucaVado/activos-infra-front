@@ -44,8 +44,6 @@ const Navbar = () => {
                     <input type="text" name="search_field" id="searchField" class="search-input" placeholder="Buscar..."/>
                         <input type="submit" id="searchButton" class="search-button" value="Buscar"/>
                 </form>
-
-
             </div>
             <div className="logout-navbar">
                 <button className="logout-button" onClick={handleLogout}>
