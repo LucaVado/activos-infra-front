@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API_BASE_URL from "../config";
 
-export const Busqueda = () => {
+const Busqueda = () => {
     const [activos, setActivos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const params = useParams();
@@ -13,19 +13,15 @@ export const Busqueda = () => {
 
     const conseguirActivos = async () => {
         try {
-            // Realizar la solicitud a tu API para obtener los activos
             const response = await fetch(`${API_BASE_URL}/activos/buscar/${params.busqueda}`);
-
             if (!response.ok) {
                 throw new Error('Error al obtener los activos');
             }
             const data = await response.json();
-            console.log(data);
-            setActivos(data);
+            setActivos(data.activos);
             setCargando(false);
         } catch (error) {
             console.error('Error:', error);
-            // Manejar el error, podrías mostrar un mensaje al usuario
             setCargando(false);
         }
     };
@@ -38,13 +34,25 @@ export const Busqueda = () => {
                 <div>
                     <h2>Activos encontrados:</h2>
                     <ul>
-                        {Array.isArray(activos) && activos.map((activo) => (
-                            <li key={activo.id}>{/* Mostrar información del activo */}</li>
+                        {activos.map(activo => (
+                            <li key={activo.id}>
+                                <p>ID: {activo.id}</p>
+                                <p>Nombre: {activo.nombre}</p>
+                                <p>Número de serie: {activo.numeroSerie}</p>
+                                <p>Número de activo: {activo.numeroActivo}</p>
+                                <p>Fecha de entrada: {new Date(activo.fechaEntrada).toLocaleDateString()}</p>
+                                <p>Fecha de salida: {new Date(activo.fechaSalida).toLocaleDateString()}</p>
+                                <p>Folio: {activo.folio}</p>
+                                <p>Guía: {activo.guia}</p>
+                                <p>Estatus: {activo.estatus}</p>
+                                <p>Razón: {activo.razon}</p>
+                            </li>
                         ))}
-
                     </ul>
                 </div>
             )}
         </div>
     );
 };
+
+export default Busqueda;

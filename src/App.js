@@ -36,7 +36,7 @@ import EditarActivo from "./pages/activo/EditarActivo";
 import VerActivo from "./pages/activo/VerActivo";
 import RevisaLlegada from "./pages/proyecto/RevisarLlegada";
 import { AuthProvider, useAuth } from "./components/AuthContext";
-import {Busqueda} from "./pages/Busqueda";
+import Busqueda from "./pages/Busqueda";
 
 const App = () =>{
   const { isLoggedIn, isAdmin } = useAuth();
