@@ -7,8 +7,18 @@ export const Busqueda = () => {
     const params = useParams();
 
     useEffect(() => {
-        console.log(params)
+        conseguirActivos();
     }, []);
+    useEffect(() => {
+        console.log(params)
+    }, [params]);
+
+    const conseguirActivos = async () => {
+
+
+
+    }
+
 
     return (
         <div>Busqueda</div>
