@@ -20,6 +20,7 @@ export const Busqueda = () => {
                 throw new Error('Error al obtener los activos');
             }
             const data = await response.json();
+            console.log(data);
             setActivos(data);
             setCargando(false);
         } catch (error) {
@@ -37,9 +38,10 @@ export const Busqueda = () => {
                 <div>
                     <h2>Activos encontrados:</h2>
                     <ul>
-                        {activos.map((activo) => (
+                        {Array.isArray(activos) && activos.map((activo) => (
                             <li key={activo.id}>{/* Mostrar información del activo */}</li>
                         ))}
+
                     </ul>
                 </div>
             )}
