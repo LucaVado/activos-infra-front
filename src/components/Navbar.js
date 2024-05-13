@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import swal from 'sweetalert';
 import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 import '../App.css'
 
@@ -19,10 +20,31 @@ const Navbar = () => {
             }
           })
     }
+
+    const [buscar, setBuscar] = useState("");
+    const navegar = useNavigate();
+
+   const hacerBusqueda = (e) => {
+       e.preventDefault()
+       let mi_busqueda = e.target.search_field.value;
+       navegar("/buscar/" + mi_busqueda);
+
+
+   }
+
+
+
+
     return (
         <div className="navbar">
 
             <div className="logo-navbar"><img src="/images/icons/paquetexpress-logo-navbar.svg"></img></div>
+            <div className="search">
+                <form className="inputG" onSubmit={hacerBusqueda}>
+                    <input type="text" name="search_field" id="searchField" class="search-input" placeholder="Buscar..."/>
+                        <input type="submit" id="searchButton" class="search-button" value="Buscar"/>
+                </form>
+            </div>
             <div className="logout-navbar">
                 <button className="logout-button" onClick={handleLogout}>
                     <img className="logout-img" src="/images/icons/icono-logout2.svg" title="Cerrar Sesión" alt="View" />
