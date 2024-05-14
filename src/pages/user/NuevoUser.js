@@ -96,29 +96,29 @@ const NuevoUser = () => {
     <div className="container-content">
       <PageTitle title= "Nuevo usuario" origen={origen}/>
       <div className="content">
-        <form class="add-form" action="/" method="">
-          <div class="form-control">
-            <label for="nombre">Nombre</label>
+        <form className="add-form" action="/" method="">
+          <div className="form-control">
+            <label form="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
           </div>
-          <div class="form-control">
-            <label for="apellidoPaterno">Apellido Paterno</label>
+          <div className="form-control">
+            <label form="apellidoPaterno">Apellido Paterno</label>
             <input type="text" name="apellidoPaterno" id="apellidoPaterno" value={apellidoPaterno} onChange={(e) => setApellidoPaterno(e.target.value)} />
           </div>
-          <div class="form-control">
-            <label for="apellidoMaterno">Apellido Materno</label>
+          <div className="form-control">
+            <label form="apellidoMaterno">Apellido Materno</label>
             <input type="text" name="apellidoMaterno" id="apellidoMaterno" value={apellidoMaterno} onChange={(e) => setApellidoMaterno(e.target.value)} />
           </div>
-          <div class="form-control">
-            <label for="numeroEmpleado">Numero de empleado</label>
+          <div className="form-control">
+            <label form="numeroEmpleado">Numero de empleado</label>
             <input type="text" name="numeroEmpleado" id="numeroEmpleado" value={numeroEmpleado} onChange={(e) => setNumeroEmpleado(e.target.value)} />
           </div>
-          <div class="form-control">
-            <label for="sucursal">Sucursal</label>
+          <div className="form-control">
+            <label form="sucursal">Sucursal</label>
             <input type="text" name="sucursal" id="sucursal" value={sucursal} onChange={(e) => setSucursal(e.target.value)} />
           </div>
-          <div class="form-control">
-            <label for="departamento">Departamento</label>
+          <div className="form-control">
+            <label form="departamento">Departamento</label>
             <select value={departamento} onChange={(e) => setDepartamento(e.target.value)}>
               {console.log('departamentos: ', departamentos)}
               {<option value='Selecciona un departamento' selected>
@@ -132,26 +132,26 @@ const NuevoUser = () => {
                 ))}
             </select>
           </div>
-          <div class="form-control">
-            <label for="correo">Correo</label>
+          <div className="form-control">
+            <label form="correo">Correo</label>
             <input type="text" name="correo" id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)} />
           </div>
-          <div class="form-control">
-            <label for="password">password</label>
+          <div className="form-control">
+            <label form="password">password</label>
             <div style={{ display: 'flex' }}>
               <input type="text" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <div style={{ marginTop: '5px' }}><button class="btn-buscar-modelo" type="button" onClick={generarPass}>Generar contraseña</button></div>
+              <div style={{ marginTop: '5px' }}><button className="btn-buscar-modelo" type="button" onClick={generarPass}>Generar contraseña</button></div>
             </div>
           </div>
-          <div class="form-control">
-            <label for="tipoUsuario">Tipo</label>
+          <div className="form-control">
+            <label form="tipoUsuario">Tipo</label>
             <select name="tipoUsuario" id="tipoUsuario" value={tipoUsuario} onChange={(e) => setTipoUsuario(e.target.value)}>
               <option value="Administrador">Administrador</option>
               <option value="Usuario" selected>Usuario</option>
             </select>
           </div>
 
-          <div className="form-button"><button class="btn" type="button" onClick={handlePost}>Crear</button></div>
+          <div className="form-button"><button className="btn" type="button" onClick={handlePost}>Crear</button></div>
         </form>
       </div>
     </div>

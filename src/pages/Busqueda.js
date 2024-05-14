@@ -42,23 +42,39 @@ const Busqueda = () => {
             ) : (
                 <div>
                     <h2>Activos encontrados:</h2>
-                    <ul>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Número de serie</th>
+                            <th>Número de activo</th>
+                            <th>Fecha de entrada</th>
+                            <th>Fecha de salida</th>
+                            <th>Folio</th>
+                            <th>Guía</th>
+                            <th>Estatus</th>
+                            <th>Razón</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         {activos.map(activo => (
-                            <li key={activo.id}>
-                                <p>ID: {activo.id}</p>
-                                <p>Nombre: {activo.nombre}</p>
-                                <p>Número de serie: {activo.numeroSerie}</p>
-                                <p>Número de activo: {activo.numeroActivo}</p>
-                                <p>Fecha de entrada: {new Date(activo.fechaEntrada).toLocaleDateString()}</p>
-                                <p>Fecha de salida: {new Date(activo.fechaSalida).toLocaleDateString()}</p>
-                                <p>Folio: {activo.folio}</p>
-                                <p>Guía: {activo.guia}</p>
-                                <p>Estatus: {activo.estatus}</p>
-                                <p>Razón: {activo.razon}</p>
+                            <tr key={activo.id}>
+                                <td>{activo.id}</td>
+                                <td>{activo.nombre}</td>
+                                <td>{activo.numeroSerie}</td>
+                                <td>{activo.numeroActivo}</td>
+                                <td>{new Date(activo.fechaEntrada).toLocaleDateString()}</td>
+                                <td>{new Date(activo.fechaSalida).toLocaleDateString()}</td>
+                                <td>{activo.folio}</td>
+                                <td>{activo.guia}</td>
+                                <td>{activo.estatus}</td>
+                                <td>{activo.razon}</td>
                                 {/* Agrega más propiedades de activo según sea necesario */}
-                            </li>
+                            </tr>
                         ))}
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
             )}
         </div>

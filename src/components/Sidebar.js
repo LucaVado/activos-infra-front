@@ -82,8 +82,10 @@ const Sidebar = ({ children }) => {
                     {menuItem.map(
                         (item, index) =>
                             !(item.path === "/users" && !isAdmin) && (
-                                <NavLink to={item.path} key={index} className="link" activeClassName="active">
-                                    <div className="icon">
+                                <NavLink to={item.path} key={index} className="link" activeclassname="active">
+
+
+                                <div className="icon">
                                         <img src={item.path === window.location.pathname ? item.iconActive : item.icon} alt={item.name} />
                                     </div>
                                     <div style={{ display: isOpen ? "block" : "none" }} className="link_text">
