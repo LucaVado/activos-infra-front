@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API_BASE_URL from "../config";
+import PageTitle from "../components/PageTitle";
+import TitleTable from "../components/TitleTable";
+import DataTable from "../components/DataTable";
 
 const Busqueda = () => {
     const [activos, setActivos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
     const params = useParams();
+    const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida', 'guia', 'estatus', 'razon'];
+    const pages = {
+        delete: 'activos/delete-activo',
+        view: '/ver-activo',
+        edit: '/editar-activo'
+    }
 
     useEffect(() => {
         conseguirActivos();
