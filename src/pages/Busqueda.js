@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import API_BASE_URL from "../config";
-import PageTitle from "../components/PageTitle";
-import TitleTable from "../components/TitleTable";
-import DataTable from "../components/DataTable";
 
 const Busqueda = () => {
     const [activos, setActivos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
     const params = useParams();
-    const columns = ['id', 'nombre', 'tipo',  'modelo', 'codigo', 'fechaEntrada', 'fechaSalida', 'guia', 'estatus', 'razon'];
-    const pages = {
-        delete: 'activos/delete-activo',
-        view: '/ver-activo',
-        edit: '/editar-activo'
-    }
+    const columns = ['ID', 'Nombre', 'Número de serie', 'Número de activo', 'Fecha de entrada', 'Fecha de salida', 'Folio', 'Guía', 'Estatus', 'Razón'];
 
     useEffect(() => {
         conseguirActivos();
@@ -39,7 +31,6 @@ const Busqueda = () => {
         }
     };
 
-
     return (
         <div>
             {cargando ? (
@@ -51,39 +42,33 @@ const Busqueda = () => {
             ) : (
                 <div>
                     <h2>Activos encontrados:</h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Número de serie</th>
-                            <th>Número de activo</th>
-                            <th>Fecha de entrada</th>
-                            <th>Fecha de salida</th>
-                            <th>Folio</th>
-                            <th>Guía</th>
-                            <th>Estatus</th>
-                            <th>Razón</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {activos.map(activo => (
-                            <tr key={activo.id}>
-                                <td>{activo.id}</td>
-                                <td>{activo.nombre}</td>
-                                <td>{activo.numeroSerie}</td>
-                                <td>{activo.numeroActivo}</td>
-                                <td>{new Date(activo.fechaEntrada).toLocaleDateString()}</td>
-                                <td>{new Date(activo.fechaSalida).toLocaleDateString()}</td>
-                                <td>{activo.folio}</td>
-                                <td>{activo.guia}</td>
-                                <td>{activo.estatus}</td>
-                                <td>{activo.razon}</td>
-                                {/* Agrega más propiedades de activo según sea necesario */}
+                    <div className="table-container">
+                        <table className="responsive-table">
+                            <thead>
+                            <tr>
+                                {columns.map((col) => (
+                                    <th key={col}>{col}</th>
+                                ))}
                             </tr>
-                        ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            {activos.map(activo => (
+                                <tr key={activo.id}>
+                                    <td data-label="ID">{activo.id}</td>
+                                    <td data-label="Nombre">{activo.nombre}</td>
+                                    <td data-label="Número de serie">{activo.numeroSerie}</td>
+                                    <td data-label="Número de activo">{activo.numeroActivo}</td>
+                                    <td data-label="Fecha de entrada">{new Date(activo.fechaEntrada).toLocaleDateString()}</td>
+                                    <td data-label="Fecha de salida">{new Date(activo.fechaSalida).toLocaleDateString()}</td>
+                                    <td data-label="Folio">{activo.folio}</td>
+                                    <td data-label="Guía">{activo.guia}</td>
+                                    <td data-label="Estatus">{activo.estatus}</td>
+                                    <td data-label="Razón">{activo.razon}</td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             )}
         </div>
